@@ -1,0 +1,184 @@
+单例模式用通俗易懂的语言来描述就是始终保持一个对象只有一个实例，那么我们如何保证一个类始终只有一个实例呢？显然就是设计模式中的单例模式，单例模式的实现方式有很多，我们先来看看最基本的单例模式的写法。
+
+一般来讲，如果说要实现单例模式，很多人会想到这两点：
+	
+	私有化构造方法
+	对外提供方法，使得外部可以利用方法来生成对象。
+	
+
+### 1、最基本的单例模式 (线程不安全)
+
+	public class Singleton {
+	    private static Singleton mSingleton;
+	    private Singleton(){
+	
+	    }
+	    public static Singleton getInstance() {
+	        if(mSingleton == null){
+	            mSingleton = new Singleton();
+	        }
+	        return mSingleton;
+	    }
+	}
+
+以上的单例模式做了如下的几种限制：
+
+	static 关键字：被 static 关键字修饰的属性或者变量有且只有一份。
+	私有构造方法：外部不能通过 new 关键字去创建对象。
+	判空说明：在创建实例对象的时候，先判断是否为空，然后再根据情况来选择直接返回之前的对象或者新建一个对象返回。
+	
+但这种情况是不完善的，比如在**多线程**的情况下就不能保证单例模式。
+
+### 2、单锁的单例模式 (线程安全)
+
+我们给上面的 getInstance() 方法加上同步锁关键字 synchronized。
+
+	public class Singleton2 {
+	    private static Singleton2 mSingleton;
+	
+	    private Singleton2(){
+	
+	    }
+	
+	    public static synchronized Singleton2 getInstance() {
+	        if(mSingleton == null){
+	            mSingleton = new Singleton2();
+	        }
+	        return mSingleton;
+	    }
+	}
+这里解释一下，被 synchronized 修饰的东西就是临界资源，临界资源仅能被一个线程占用。举个例子，这就好比公共厕所，公共厕所只有一个位置，那坑位就是临街资源，一群人都想去上厕所，只能排队等着。一个上完了下一个再进去 ，总不能说别人蹲的正开心，你一脚踹开门就进去了，这样就属于抢占式了。
+
+上面解释了一下临界资源，所以上面的单例模式缺陷也很明显，**效率太低**，如果一次来了 100 个线程，就必须依次排队，但是实际情况中的线程何止有 100 个。
+
+### 3、双锁模式 (线程安全)
+
+	public class Singleton3 {
+	    private static Singleton3 mSingleton;
+	
+	    private Singleton3(){
+	
+	    }
+	
+	    public static synchronized Singleton3 getInstance() {
+	        if(mSingleton == null){
+	            synchronized (Singleton3.class) {
+	                if(mSingleton == null)
+	                mSingleton = new Singleton3();
+	            }
+	        }
+	        return mSingleton;
+	    }
+	}
+	
+别说了，可以实现单例，但是问题和上面的一样，**效率是个主要的问题**。
+
+
+>  根据以上两种单例模式的实现，应该总结出一句话。
+> 
+>  **同步锁要善用。**
+> 
+>  **同步锁要善用。**
+> 
+>  **同步锁要善用。**
+
+
+### 4、双检查模式 (线程安全)
+
+上面双锁模式效率太低主要是因为我们把整个方法都用同步锁锁住了，这就是性能的问题所在，现在我们把方法外面的同步锁去掉，就演变成了双检查单例模式。
+
+	public class Singleton4 {
+	    private static volatile Singleton4 mSingleton;
+	
+	    private Singleton4(){
+	
+	    }
+	
+	    public static Singleton4 getInstance() {
+	        if(mSingleton == null){
+	            synchronized (Singleton4.class) {
+	                if(mSingleton == null)
+	                mSingleton = new Singleton4();
+	            }
+	        }
+	        return mSingleton;
+	    }
+	}
+
+> 注意这里有一个 volatile 修饰符，如果不加这个修饰符，是有问题的。具体问题请自行 google ，关键词**对象逃逸**。
+
+ 
+### 5、使用静态常量 (线程安全)
+
+	public class Singleton5 {
+	    private static final Singleton5 mSingleton = new Singleton5();
+	
+	    private Singleton5(){
+	
+	    }
+	
+	    public static Singleton5 getInstance() {
+	        return mSingleton;
+	    }
+	}
+	
+> 这个比较简单，在类加载的时候完成实例化，并且被 static 关键字修饰，有且只有一个实例对象，避免了线程同步的问题。
+> 并没有解决懒加载的问题，如果这个实例一直不被使用，那么该实例将会白白占用资源。反正就是不管三七二十一，劳资先初始化了再说，管你用不用劳资。
+
+
+### 6、使用静态代码块 (线程安全)
+
+	public class Singleton6 {
+	    private static Singleton6 mSingleTon6;
+	
+	    static {
+	        mSingleTon6 = new Singleton6();
+	    }
+	
+	    private Singleton6() {}
+	
+	    public Singleton6 getInstance() {
+	        return mSingleTon6;
+	    }
+	}
+
+> 静态代码块也是在类装载的时候实例化的，所以这个方法的优缺点和上面的是一样的。
+
+
+### 7、静态内部类 (线程安全)
+
+	public class Singleton7 {
+	    private Singleton7() {}
+	    
+	    private static class SingletonInstance {
+	        private static final Singleton7 mSingleTon = new Singleton7();
+	    }
+	
+	    public static Singleton7 getInstance() {
+	        return SingletonInstance.mSingleTon;
+	    }
+	}
+
+> 采用了类装载的机制来保证初始化时只有一个实例产生。
+> 
+> 静态内部类方式在 Singleton7 类被装载时并不会立即实例化。而是在需要实例化时，调用 getInstance() 方法，才会装载 SingletonInstance 类，从而完成 Singleton7 的实例化。
+
+
+### 8、枚举 （线程安全）
+
+	public enum Singleton8 {
+		//定义一个枚举的元素，就代表了一个 Singleton8  的实例。
+	    INSTANCE;
+	    //单例可以有自己的其他操作
+	    public void otherFunc() {
+	
+	    }
+	}
+	
+单元素的枚举类型已经成为实现 Singleton 的最佳方法。用枚举来实现单例非常简单，只需要编写一个包含单个元素的枚举类型即可。即使利用反射也没有办法多次实例化一个枚举量。
+
+
+## 总结
+虽然单例模式的实现有很多，但是最推荐的还是**静态内部类**和**枚举**这两种写法，其次就是**双检查模式**。
+
+虽然单例模式好玩，但是不要过分的使用它们，有句话怎么说来着，no zuo no die。
