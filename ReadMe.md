@@ -75,7 +75,7 @@
 
 ### 31. 反射的作用与原理
 
-### 32. 泛型常用特点，List<String> 能否转换成 List<Object>
+### 32. 泛型常用特点，List《String》 能否转换成 List《Object》
 
 ### 33. 解析 XML 的几种方式的原理与特点：DOM、SAX、PULL
 
