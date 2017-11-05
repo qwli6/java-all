@@ -17,7 +17,7 @@
 
 ### <a href="J2SE 基础/2. switch 能用 String 做参数吗.md">2. switch 能否用 String 做参数？</a>
 
-### 3. equals 与 == 的区别？
+### <a href="J2SE 基础/3.关于 == 和 equals 方法以及 compareTo.md">3. equals 与 == 的区别？</a>
 
 ### 4. Object 有哪些共用的方法？
 
