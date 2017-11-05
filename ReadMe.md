@@ -15,7 +15,7 @@
 
 ### <a href="J2SE 基础/1.Java 的八种数据类型.md">1. Java 中的八种基本数据类型，以及它们的封装类</a>
 
-### <a href="J2SE 基础/2. Switch 能用 String 做参数吗.md">2. switch 能否用 String 做参数？</a>
+### <a href="J2SE 基础/2. switch 能用 String 做参数吗.md">2. switch 能否用 String 做参数？</a>
 
 ### 3. equals 与 == 的区别？
 
