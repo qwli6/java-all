@@ -19,11 +19,11 @@
 
 ### <a href="J2SE 基础/3.关于 == 和 equals 方法以及 compareTo.md">3. equals 与 == 的区别？</a>
 
-### 4. Object 有哪些共用的方法？
+### <a href="J2SE 基础/4.Object 中的共用方法.md">4. Object 有哪些共用的方法？</a>
 
 ### <a href="J2SE 基础/5.Java 中的四种引用类型以及用到的场景.md">5. Java 的四种引用，强弱软虚，用到的场景。</a>
 
-### 6. Hashcode 的作用
+### 6. HashCode 的作用
 
 ### 7. ArrayList、LinkedList、Vector 的区别。
 
