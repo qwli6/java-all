@@ -252,7 +252,7 @@
 
 # 六、Android 基础知识
 
-### 1. Activity 与 Fragment 的声明周期
+### 1. Activity 与 Fragment 的生命周期
 
 ### 2. Activity 的四种启动模式与特点
 
