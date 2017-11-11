@@ -27,7 +27,7 @@
 
 ### 7. ArrayList、LinkedList、Vector 的区别。
 
-### 8. String、StringBuffer 与 StringBuilder 的区别。
+### <a href="J2SE 基础/8.String，StringBuilder 以及 StringBuffer 的区别">8. String、StringBuffer 与 StringBuilder 的区别。</a>
 
 ### 9. Map、Set、List、Queue、Stack 的特点与用法。
 
