@@ -11,23 +11,23 @@
 
 大纲目录如下：
 
-# 一、J2SE 基础
+# 一、Java 基础
 
-### <a href="J2SE 基础/1.Java 的八种数据类型.md">1. Java 中的八种基本数据类型，以及它们的封装类</a>
+### <a href="Java/1.Java 的八种数据类型.md">1. Java 中的八种基本数据类型，以及它们的封装类</a>
 
-### <a href="J2SE 基础/2. switch 能用 String 做参数吗.md">2. switch 能否用 String 做参数？</a>
+### <a href="Java/2. switch 能用 String 做参数吗.md">2. switch 能否用 String 做参数？</a>
 
-### <a href="J2SE 基础/3.关于 == 和 equals 方法以及 compareTo.md">3. equals 与 == 的区别？</a>
+### <a href="Java/3.关于 == 和 equals 方法以及 compareTo.md">3. equals 与 == 的区别？</a>
 
-### <a href="J2SE 基础/4.Object 中的共用方法.md">4. Object 有哪些共用的方法？</a>
+### <a href="Java/4.Object 中的共用方法.md">4. Object 有哪些共用的方法？</a>
 
-### <a href="J2SE 基础/5.Java 中的四种引用类型以及用到的场景.md">5. Java 的四种引用，强弱软虚，用到的场景。</a>
+### <a href="Java/5.Java 中的四种引用类型以及用到的场景.md">5. Java 的四种引用，强弱软虚，用到的场景。</a>
 
 ### 6. HashCode 的作用
 
-### <a href="J2SE 基础/ArrayList、LinkedList、Vector 的区别.md">7. ArrayList、LinkedList、Vector 的区别</a>
+### <a href="Java/ArrayList、LinkedList、Vector 的区别.md">7. ArrayList、LinkedList、Vector 的区别</a>
 
-### <a href="J2SE 基础/8.String，StringBuilder 以及 StringBuffer 的区别.md">8. String、StringBuffer 与 StringBuilder 的区别。</a>
+### <a href="Java/8.String，StringBuilder 以及 StringBuffer 的区别.md">8. String、StringBuffer 与 StringBuilder 的区别。</a>
 
 ### 9. Map、Set、List、Queue、Stack 的特点与用法。
 
@@ -39,7 +39,7 @@
 
 ### 13. Collection 包结构，与 Collections 的区别。
 
-### <a href="J2SE 基础/try catch finally, try 中有 return，finally 还走吗？.md">14. try catch finally， try 里面有 return， finally 还执行吗？</a>
+### <a href="Java/try catch finally, try 中有 return，finally 还走吗？.md">14. try catch finally， try 里面有 return， finally 还执行吗？</a>
 
 ### 15. Exception 与 Error 包结构。OOM 你遇到过哪些情况， SOF 你遇到过哪些情况。
 
