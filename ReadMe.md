@@ -25,9 +25,9 @@
 
 ### 6. HashCode 的作用
 
-### <a href="J2SE 基础/ArrayList、LinkedList、Vector 的区别">7. ArrayList、LinkedList、Vector 的区别</a>
+### <a href="J2SE 基础/ArrayList、LinkedList、Vector 的区别.md">7. ArrayList、LinkedList、Vector 的区别</a>
 
-### <a href="J2SE 基础/8.String，StringBuilder 以及 StringBuffer 的区别">8. String、StringBuffer 与 StringBuilder 的区别。</a>
+### <a href="J2SE 基础/8.String，StringBuilder 以及 StringBuffer 的区别.md">8. String、StringBuffer 与 StringBuilder 的区别。</a>
 
 ### 9. Map、Set、List、Queue、Stack 的特点与用法。
 
@@ -39,7 +39,7 @@
 
 ### 13. Collection 包结构，与 Collections 的区别。
 
-### 14. try catch finally， try 里面有 return， finally 还执行吗？
+### <a href="J2SE 基础/try catch finally, try 中有 return，finally 还走吗？.md">14. try catch finally， try 里面有 return， finally 还执行吗？</a>
 
 ### 15. Exception 与 Error 包结构。OOM 你遇到过哪些情况， SOF 你遇到过哪些情况。
 
