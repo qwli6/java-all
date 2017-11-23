@@ -38,16 +38,19 @@ http://repo.maven.apache.org
 
 ### 3. Maven 项目的构建过程
 
-maven 将项目构建的过程进行标准化，每个阶段使用一个命令完成。
-
-**清理 -- 编译 -- 测试 -- 报告 -- 打包 -- 部署**
 
 
+
+
+
+**3.1 项目的一键运行**
 
 进入项目的 `pom.xml` 目录中，运行：
 
 ```
+//默认运行的是 tomcat 6，如需运行指定的 tomcat 版本，需要配置插件
 mvn tomcat:run
+
 ```
 
 打开 `http://localhost:8080/xxx` 即可看到运行的项目。
@@ -55,10 +58,11 @@ mvn tomcat:run
 
 
 
-**项目的一键构建**
+**3.2 项目的一键构建流程**
 
-编译 -- 测试 -- 运行 -- 打包 -- 安装
+maven 将项目构建的过程进行标准化，每个阶段使用一个命令完成。
 
+> **清理 -- 编译 -- 测试 -- 报告 -- 打包 -- 部署**
 
 ----
 
@@ -107,21 +111,25 @@ mvn tomcat:run
 
 ### 5. 使用 Inteillj 开发 maven 项目
 
-1. 配置 maven 目录
+1. 配置 maven 目录和本地仓库的位置
+
+ <img src="/Users/liqiwen/Desktop/屏幕快照 2017-11-23 09.07.45.png"/>
+
+2. 构建索引
+
+ <img src="/Users/liqiwen/Desktop/屏幕快照 2017-11-23 09.09.56.png"/>
+
+3. 在 inteillj 创建 maven 工程
+
+`new` --> `project` --> `maven`
 
 
-2. 配置本地仓库
+<img src="/Users/liqiwen/Desktop/屏幕快照 2017-11-23 09.13.05.png"/>
+
+<img src="/Users/liqiwen/Desktop/屏幕快照 2017-11-23 09.14.41.png"/>
 
 
-3. 构建索引
-
-4. 在 inteillj 创建 maven 工程
-
-
-
-
-
-
+<img src="/Users/liqiwen/Desktop/屏幕快照 2017-11-23 09.19.01.png"/>
 
 
 
