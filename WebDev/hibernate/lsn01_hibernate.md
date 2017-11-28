@@ -1,12 +1,12 @@
 # hibernate 入门
 
-hibernate 是一个经典的 orm（对象关系映射）框架
+`hibernate` 是一个经典的 `orm`（对象关系映射）框架
 
 
 
 ### 1. 入门
 
-利用 idea 新建一个 web 工程，选中 hibernate 模块，让 idea 自动去帮我们下载所需要的 jar 包。此处可能会下载失败，如果下载失败了，换下网络重新下载即可。
+利用 `idea` 新建一个 `web` 工程，选中 `hibernate` 模块，让 `idea` 自动去帮我们下载所需要的 `jar` 包。此处可能会下载失败，如果下载失败了，换下网络重新下载即可。
 
 
 ### 2. 编写对象映射文件以及实体类
@@ -17,8 +17,8 @@ hibernate 是一个经典的 orm（对象关系映射）框架
 <!DOCTYPE hibernate-mapping PUBLIC
         "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
         "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<hibernate-mapping>
-    <class name="com.lqwit.domain.User" table="user">
+<hibernate-mapping package = "com.lqwit.domain">
+    <class name="User" table="user">
     	 <!--
     	  name: 表示实体类的成员字段名称
     	  column： 表示数据库表中的字段名称
@@ -117,8 +117,6 @@ public class User {
         <!--3. 引入实体映射关系表-->
         <mapping resource="com/lqwit/domain/User.hbm.xml"/>
     </session-factory>
-
-
 </hibernate-configuration>
 ```
 
@@ -128,13 +126,13 @@ public class User {
  <property name="hibernate.hbm2ddl.auto">update</property>
 ```
 
-有几种可选值：（通过控制台打印的 sql 语句可以看出来）
+有几种可选值：（通过控制台打印的 `sql` 语句可以看出来）
 
 > 1. create ：每次执行都创建一张表，没有表就创建，有表就先删除，再创建。(自己测试用)
 > 
 > 2. create-drop： 表存在的情况下：先删除再创建表，执行完后再删除表。表不存在的情况下：先创建表，执行操作，执行完成后删除表。
 > 
-> 3. update：如果没有表，创建表结构。如果有表结构，不会创建，正常添加数据。update 可以用来帮我们更新数据库的字段信息。如果需要加字段，直接在实体类和映射文件中完善就可以了。但是不能帮你删除字段。删除字段需要手动执行 alter table user drop column1;
+> 3. update：如果没有表，创建表结构。如果有表结构，不会创建，正常添加数据。`update` 可以用来帮我们更新数据库的字段信息。如果需要加字段，直接在实体类和映射文件中完善就可以了。但是不能帮你删除字段。删除字段需要手动执行 `alter table user drop column1`;
 >
 >4. validate: 校验。校验实体类字段和数据库字段是不是一一对应的。
 
@@ -182,28 +180,24 @@ Hibernate: insert into user (name, sex, address) values (?, ?, ?)
 ```
 
 
-### 6. hibernate 包结构
-
-<img src="../Other/Images/web/hibernate_package_structure.png">
-
 # SessionFactory 
-SessionFactory 负责初始化 Hibernate。SessionFactory 并不是轻量级的，初始化和销毁都需要消耗一定的资源，所以我们只需要为每一个数据库指定一个 SessionFactory 即可。
+`SessionFactory` 负责初始化 `Hibernate`。`SessionFactory` 并不是轻量级的，初始化和销毁都需要消耗一定的资源，所以我们只需要为每一个数据库指定一个 `SessionFactory` 即可。
 
-SessionFactory 是工厂类，是生成 Session 对象的工厂类。
+`SessionFactory` 是工厂类，是生成 `Session` 对象的工厂类。
 
 SessionFactory 的特点：
 
-1. 有 COnfiguration 通过加载配置文件创建该对象。
-2. SessionFactory 对象中保存了当前的数据库配置信息和所有的映射关系以及预定义的 sql 语句。同时， SessionFactory 还负责维护 hibernate 的二级缓存。
-3. 一个 SessionFactory 实例对应一个数据库，应用从该对象中获取 Session 实例。
-4. SessionFactory 是重量级的，意味着不能随意创建或者销毁它的实例，如果只访问一个数据库，只需要创建一个 SessionFactory 即可。
-5. SessionFactory 是线程安全的，意味着它的一个实例可以被应用的多个线程共享。
-6. SessionFactory 需要一个较大的缓存，用来存放预定义的 sql 语句以及实体类的映射信息，另外可以配置一个缓存插件，这个插件被称之为 hibernate 的二级缓存，被多线程共享。
+1. 有 `Configuration` 通过加载配置文件创建该对象。
+2. `SessionFactory` 对象中保存了当前的数据库配置信息和所有的映射关系以及预定义的 `sql` 语句。同时， `SessionFactory` 还负责维护 `hibernate` 的二级缓存。
+3. 一个 `SessionFactory` 实例对应一个数据库，应用从该对象中获取 `Session` 实例。
+4. `SessionFactory` 是重量级的，意味着不能随意创建或者销毁它的实例，如果只访问一个数据库，只需要创建一个 `SessionFactory` 即可。
+5. `SessionFactory` 是**线程安全**的，意味着它的一个实例可以被应用的多个线程共享。
+6. `SessionFactory` 需要一个较大的缓存，用来存放预定义的 `sql` 语句以及实体类的映射信息，另外可以配置一个缓存插件，这个插件被称之为 `hibernate` 的二级缓存，被多线程共享。
 
 
 
 
-**总结：一般应用使用一个 SessionFactory ，最好是应用启动的时候就完成初始化。**
+**总结：一般应用使用一个 `SessionFactory` ，最好是应用启动的时候就完成初始化。**
 
 > 封装一个 Hibernate SessionFactory 的工具类
 > 
@@ -229,7 +223,7 @@ public class HibernateUtils {
 
 # Transaction 接口
 
-Transaction 是事务的接口，常用的方法如下
+`Transaction` 是事务的接口，常用的方法如下
 
 ```
 commit()   提交事务
@@ -238,9 +232,9 @@ rollback() 回滚事务
 
 特点：
 
-> Hibernate 框架默认情况下事务不自动提交，需要手动提交事务。
+> `Hibernate` 框架默认情况下事务不自动提交，需要手动提交事务。
 > 
-> 如果没有开启事务，那么每个 Session 的操作，都相当于一个独立的事务。
+> 如果没有开启事务，那么每个 `Session` 的操作，都相当于一个独立的事务。
 
 
 # 测试常用的方法的单元测试代码
@@ -332,7 +326,7 @@ public void testSaveOrUpate(){
 }
 ```
 
-利用 HQL 语句查询全部对象
+利用 `HQL` 语句查询全部对象
 
 ```
 /**
@@ -356,4 +350,4 @@ public void testSel(){
 
 ```
 
-关于 hibernate 的查询方式有很多，分一篇笔记单独来讲解。
+关于 `hibernate` 的查询方式有很多，分一篇笔记单独来讲解。

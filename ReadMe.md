@@ -333,6 +333,11 @@
 
 
 ----
+### 七、Web 开发框架
+
+#### <a href="WebDev/hibernate/lsn01_hibernate.md">1. hibernate 框架开发入门</a>
+#### <a href="WebDev/hibernate/lsn02_hibernate.md">2. hibernate 事务以及丢失更新问题</a>
+----
 
 ### 七、版本控制与项目构建工具
 
