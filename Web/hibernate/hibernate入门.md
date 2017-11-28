@@ -184,8 +184,7 @@ Hibernate: insert into user (name, sex, address) values (?, ?, ?)
 
 ### 6. hibernate 包结构
 
-<img src="../images/web/hibernate _package_structure.png">
-
+<img src="../Other/Images/web/hibernate_package_structure.png">
 
 # SessionFactory 
 SessionFactory 负责初始化 Hibernate。SessionFactory 并不是轻量级的，初始化和销毁都需要消耗一定的资源，所以我们只需要为每一个数据库指定一个 SessionFactory 即可。
