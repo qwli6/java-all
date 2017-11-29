@@ -339,7 +339,11 @@
 
 #### <a href="WebDev/hibernate/lsn02_hibernate.md">2. hibernate 事务以及丢失更新问题</a> ####
 
-#### <a href="WebDev/hibernate/lsn03_hibernate.md">3. hibernate 级联删除以及级联更新问题</a>
+#### <a href="WebDev/hibernate/lsn03_hibernate.md">3. hibernate 级联删除以及级联更新问题</a> ####
+
+#### <a href="WebDev/hibernate/lsn04_hibernate.md">4. hibernate 关于单表查询的几种方式</a> ####
+
+#### <a href="WebDev/hibernate/lsn05_hibernate.md">5. hibernate 关于多表的查询</a> ####
 
 ----
 
