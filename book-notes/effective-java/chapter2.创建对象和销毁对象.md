@@ -22,3 +22,38 @@ public static Boolean valueOf(booean b){
 }
 ```
 
+> 
+> 注意： 这里的静态工厂方法并不等同于设计模式中的工厂模式
+
+### 1. 提供静态工厂方法具有的几个优势
+
+#### 1、静态工厂方法与构造器不同，它们有名称。
+
+我们都知道，构造方法是没有返回值的，例如 `new BigInteger(int a, int b)`，这样返回的 `BigInteger` 对象可能是一个素数，但是如果使用 `BigInteger.probablePrime()` 这样的方法来提供 `BigInteger` 的对象，这样来返回对象的实例将会显得更加清楚。
+
+
+#### 2、另外，静态工厂方法不必在每次调用他们的时候都创建一个新的对象的实例
+
+虽然创建实例的开销不大，但是频繁的创建一个对象的实例，并不是一件好事。这个时候如果我们利用静态工厂方法来提供对象的实例，我们可以事先将要使用的对象实例缓存起来，进行重复利用。比如：
+
+```
+public class User{
+	private static User user;
+	
+	private User(){
+	
+	}
+	
+	public static User createUser(){
+		if(user == null){
+			user = new User();
+			return user;
+		}
+	
+		return user;
+	}
+}
+
+```
+
+以上的写法和单例模式有点类似，但是这只能保证在单线程下 `User` 对象的实例可以被重复利用，如果是多线程的情况下，可能会出现多个 `User` 对象的问题。
