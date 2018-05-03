@@ -40,6 +40,33 @@
 
 `head` 标签中申明了文档的元数据，即 `<meta> 元数据`
 
+> 可以添加到 `head` 中常用的标签元素为：
+> `<title>`， `<style>`， `<meta>`，`<link>`，`<script>`
+
+
+为搜索引擎定义关键词
+
+```html
+<meta name="keywords" content="HTML, CSS"/>
+```
+
+为网页定义描述内容
+
+```html
+<meta name="description" content="这是一个网页描述"/>
+```
+
+定义网页作者
+
+```html
+<meta name="author" content="lqwit"/>
+```
+
+每 `3` 秒刷新当前页面
+
+```html
+<meta http-equiv="refresh" content="3"/>
+```
 
 - **`title` 标签**
 
@@ -47,7 +74,7 @@
 <title> 标签
 ```
 
-`title` 标签中包含了文档的标题
+`title` 标签中包含了文档的标题，它定义了浏览器工具的标题。当网页添加到收藏夹时，显示在收藏夹中的标题。同时也是显示在搜索引擎结果页面的标题。
 
 - **`body` 标签**
 
