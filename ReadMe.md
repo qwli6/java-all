@@ -267,8 +267,8 @@
 ### 八、前端开发篇
 
 - Vue 篇
-  - [Vue入门](07-Vue.js/00-Vue2入门.md)
-  - [Vue定义组件](07-Vue.js/01-Vue2定义组件.md)
+  - [Vue入门](11-前端技能/07-Vue.js/00-Vue2入门.md)
+  - [Vue定义组件](11-前端技能/07-Vue.js/01-Vue2定义组件.md)
   - Vue 使用路由
 - NodeJs 篇
 - Html 篇
