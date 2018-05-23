@@ -1,9 +1,10 @@
-# `hibernate` 几种查询方式
+### `hibernate` 几种查询方式
 
-### 1. 唯一标识 OID 的查询方式
+- 唯一标识 OID 的查询方式
+
 这种方式最简单，也就是通过主键来查询
 
-```
+```java
 @Test
 public void run(){
     Session session = HibernateUtil.getSession();
@@ -14,8 +15,7 @@ public void run(){
 
 `get` 方式是查询对象时候，没有进行懒加载的查询方式，`load` 方法是查询的时候使用了懒加载的方式。
 
-
-### 2. 对象导航方式
+- 对象导航方式
 
 ```
 @Test
@@ -36,17 +36,17 @@ public void run2(){
 
 拿用户和订单的例子来说明，通过 `唯一标识` 的方式查询出我们所需要的用户对象，然后通过查询出来的用户获取该用户下的订单状态就是 `对象导航` 的方式。
 
-### 3. `HQL` 查询
+- `HQL` 查询
+
 `HQL` 查询全称就是 `hibernate query language`，也就是 `Hibernate` 提供的一种查询方式。
 
-```
+```java
 @Test
 public void run3(){
     Session session = HibernateUtil.getSession();
     Query query = session.createQuery("from User");
     List<User> list = query.list();
-    for (User user :
-            list) {
+    for (User user : list) {
         System.out.println(user);
     }
 }
@@ -56,7 +56,7 @@ public void run3(){
 
 同样，和执行 `sql` 语句一样，可以给对象起别名（数据库是给表起别名）。
 
-```
+```java
 @Test
 public void run31(){
     Session session = HibernateUtil.getSession();
@@ -71,13 +71,12 @@ public void run31(){
 
 还可以进行排序
 
-```
+```java
 @Test
 public void run32(){
     Session session = HibernateUtil.getSession();
     List<User2> list = session.createQuery("select u from User2 as u order by id desc").list();
-    for (User2 user2 :
-            list) {
+    for (User2 user2 : list) {
         System.out.println(user2);
     }
 }
@@ -86,7 +85,7 @@ public void run32(){
 
 同样，`hibernate` 给我们提供了分页的方法。
 
-```
+```java
 @Test
 public void run33(){
     Session session = HibernateUtil.getSession();
@@ -95,17 +94,15 @@ public void run33(){
 //        query.setFirstResult((2-1)*3);//查询第二页的数据
     query.setMaxResults(3);//每一页显示多少数据
     List<User2> list = query.list();
-    for (User2 user2 :
-            list) {
+    for (User2 user2 : list) {
         System.out.println(user2);
     }
 }
-
 ```
 
 当然，如果我们要执行条件查询，也可以添加查询条件
 
-```
+```java
 /**
  * HQL
  * 利用 setParameter 查询添加条件
@@ -115,11 +112,10 @@ public void run4(){
     Session session = HibernateUtil.getSession();
     Transaction transaction = session.beginTransaction();
     Query query = session.createQuery("from User2 where age > ?");
+    // 给索引位为 0 的 ？设置参数为 13
     query.setParameter(0, 13);
-
     List<User2> list = query.list();
-    for (User2 user :
-            list) {
+    for (User2 user : list) {
         System.out.println(user);
     }
     transaction.commit();
@@ -138,8 +134,7 @@ public void run5(){
 
     query.setParameter("age", 13);
     List<User2> list = query.list();
-    for (User2 user :
-            list) {
+    for (User2 user : list) {
         System.out.println(user);
     }
     session.close();
@@ -148,7 +143,7 @@ public void run5(){
 
 或者进行模糊查询
 
-```
+```java
 /**
  * HQL 模糊查询
  */
@@ -157,19 +152,17 @@ public void run51(){
     Session session = HibernateUtil.getSession();
     List<User2> list = session.createQuery("from User2 where name like ?")
             .setParameter(0, "%曹%").list();
-    for (User2 user :
-            list) {
+    for (User2 user : list) {
         System.out.println(user);
     }
-
 }
 ```
 
-### 4. 投影查询
+- 投影查询
 
 以上的查询方式都是查询的全部字段，同样和执行 `sql` 一样，我们可以指定查询某一些字段。
 
-```
+```java
 /**
  * 投影查询，可以不查全部字段，并且指定查询
  * 某一些字段
@@ -193,7 +186,7 @@ public void run6(){
 
 当然以上的字段都是封装成数组，我们也可以将我们要查询的字段封装成对象。
 
-```
+```java
 /**
  * 把投影查询出来的结果映射到对象中
  * //output
@@ -227,7 +220,7 @@ public User2(String name, Integer age) {
 
 另外，我们通常也可以执行聚合函数，比如 `count(), sum(), avg(), max(), min()` 等等。
 
-```
+```java
  /**
  * 聚合函数： sum() count() avg() max() min()
  */
@@ -244,13 +237,13 @@ public void run7(){
 
 ```
 
-### 5. `QBC` 查询方式
+-  `QBC` 查询方式
 
 所谓 `QBC` 查询，就是 `Query By Criteria`，也就是条件查询，`QBC` 查询是最适合做条件查询的。
 
 > 注意：在 `hibernate 5.2 `版本之后，`Criteria` 查询方式已经被标记为废弃，官方推荐我们使用 `JPA Criteria` 来执行条件查询。
 
-```
+```java
 /**
  * QBC 查询方式 Query By Criteria （按条件查询）
  */
@@ -267,12 +260,11 @@ public void run8(){
         System.out.println(user);
     }
 }
-
 ```
 
 `QBC` 升序，降续
 
-```
+```java
 /**
  * QBC 按id升序
  */
@@ -293,7 +285,7 @@ public void run9(){
 
 `QBC` 分页查询
 
-```
+```java
 /**
  * QBC 分页
  */
@@ -315,7 +307,7 @@ public void run10(){
 
 `QBC` 条件查询
 
-```
+```java
 /**
  * QBC 条件查询
  */
@@ -358,7 +350,7 @@ public void run12(){
 
 `QBC` 查询聚合函数
 
-```
+```java
 /**
  * QBC 查询聚合条件
  * Projections: 聚合函数的工具类
@@ -374,18 +366,17 @@ public void run13(){
     //重置聚合函数条件
     criteria.setProjection(null);
     List<User2> list = criteria.list();
-    for (User2 user :
-            list) {
+    for (User2 user : list) {
         System.out.println(user);
     }
-
 }
 ```
 
-#### 离线条件查询
+- 离线条件查询
+
 所谓离线条件查询，就是指查询条件不依赖 `Session`，只有当真正查询的时候才依赖 `Session`。
 
-```
+```java
 /**
  * 离线条件查询
  * DetachedCriteria 创建不依赖 session，查询需要依赖 session
@@ -398,20 +389,20 @@ public void run14(){
 
     Criteria criteria = detachedCriteria.getExecutableCriteria(HibernateUtil.getSession());
     List<User2> list = criteria.list();
-    for (User2 user :
-            list) {
+    for (User2 user : list) {
         System.out.println(user);
     }
 }
 
 ```
 
-### 6. 执行原生的 `sql` 查询
+- 执行原生的 `sql` 查询
+
 当以上的条件不满足条件的时候，我们可以考虑使用原生的 `sql` 来执行查询。当然这种查询方式会破坏 `hibernate` 原有的 `orm` 关系。
 
 将查询的结果封装到 `Object[]` 中去。
 
-```
+```java
 /**
  * 执行原生SQL语句查询
  * 默认是封装到数组中的，我们可以执行添加实体对象选择将数据封装到对象中--具体实现 run16中
@@ -422,8 +413,7 @@ public void run15(){
 //        NativeQuery sqlQuery = session.createSQLQuery("select * from user2");
     NativeQuery query = session.createNativeQuery("select * from user2");
     List<Object[]> list = query.list();
-    for (Object[] objs :
-            list) {
+    for (Object[] objs : list) {
         System.out.println(Arrays.toString(objs));
     }
 }
@@ -431,21 +421,25 @@ public void run15(){
 
 同样我们也可以把查询出来的结果封装到实体类中去。
 
-```
+```java
 /**
- * 原生 sql 查询，封装查询结果到实体对象zhogn
+ * 原生 sql 查询，封装查询结果到实体对象中
  */
 @Test
 public void run16(){
     Session session = HibernateUtil.getSession();
     List<User2> list = session.createNativeQuery("select * from user2").addEntity(User2.class).list();
-    for (User2 user :
-            list) {
+    for (User2 user : list) {
         System.out.println(user);
     }
 }
 ```
 
-# 总结
-以上就是 `hibernate` 给我们提供的集中查询方式，当然仅仅只是针对单表查询。但是以上的几种方式足以让我们能够应付大部分的查询。
+------
+
+
+
+### 总结
+
+以上就是 `hibernate` 给我们提供的几种查询方式，当然仅仅只是针对单表查询。但是以上的几种方式足以让我们能够应付大部分的查询。
 
