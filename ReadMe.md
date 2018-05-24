@@ -275,6 +275,8 @@
   - [Vue2 计算属性和侦听](11-前端技能/07-Vue.js/05-Vue2计算属性和侦听.md)
   - [Vue2 绑定 Class 和 Style](11-前端技能/07-Vue.js/06-Vue2绑定Class和Style.md)
   - [Vue2 条件渲染](11-前端技能/07-Vue.js/07-Vue2条件渲染.md)
+  - [Vue2 列表渲染](11-前端技能/07-Vue.js/08-Vue2列表渲染.md)
+  - [Vue2 事件处理](11-前端技能/07-Vue.js/09-Vue2事件处理.md)
   - Vue 使用路由
 - NodeJs 篇
 - Html 篇
