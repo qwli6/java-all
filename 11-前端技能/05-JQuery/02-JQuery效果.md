@@ -112,5 +112,136 @@ $(selector).toggle(speed, callback);
   });
   ```
 
-  
+- fadeToggle
+
+  `fadeToggle` 方法可以在 `fadeIn` 和 `fadeOut` 方法之间进行切换。
+
+  - 如果元素淡出，`fadeToggle` 会给元素添加 `fadeOut` 方法。
+
+  - 如果元素淡入，`fadeToggle` 会给元素添加 `fadeIn` 方法。
+
+    例如：
+
+    ```javascript
+    $('#fadeToggle').click(function(){
+        $('p').fadeToggle(3000, function(){
+            console.log('淡入/淡出');
+        });
+    });
+    ```
+
+    语法：
+
+    ```javascript
+    // speed 和 callback 同上
+    $(selector).fadeToggle(speed, callback);
+    ```
+
+- fadeTo  
+
+  `fadeTo` 方法允许元素渐变成某一个给定的不透明值（0-1）
+
+  ```javascript
+  $('#fadeTo').click(function(){
+  	$('p').fadeTo('slow', 0.5);
+  });
+  ```
+
+#### JQuery 滑动
+
+`JQuery` 拥有以下的滑动方法：`slideDown()`，`slideUp()`，`slideToggle()`
+
+语法：
+
+```javascript
+// speed 和 callback 同上
+$(selector).slideDown(speed, callback);
+$(selector).slideUp(speed, callback);
+$(selector).slideToggle(speed, callback);
+```
+
+```javascript
+$(function(){
+    $('#slide').click(function(){
+        //                $('#content').slideUp();
+        //                $('#content').slideDown();
+        $('#content').slideToggle();
+    });
+});
+```
+
+```html
+<div id="slide">点我显示滑动</div>
+<div id="content">这是一段文字</div>
+```
+
+#### JQuery 动画
+
+`JQuery`中的 `animate()` 方法允许创建自定义的动画。
+
+语法：
+
+```javascript
+// params 参数定义形成动画的 css 属性
+// speed 可选值为 fast slow 以及毫秒数，表示动画执行的时间
+// callback 表示动画执行完成后的回调函数
+$(selector).animate({params}, speed, callback);
+```
+
+例如：让 `div` 距左边距 `250px`
+
+```javascript
+$('#animate').click(function(){
+    $('#content').animate({marginLeft: '250px'});
+});
+```
+
+**同样动画可以同时操作多个属性。**例如：
+
+```javascript
+$('#animate').click(function(){
+    $('#content').animate({marginLeft: '250px', height: '300px', width: '300px'});
+});
+```
+
+
+
+> animate 可以操作几乎全部的 css 属性，但是必须要注意的一点就是操作属性必须是以驼峰来命名的 css 属性。例如 margin-left 需要写成 marginLeft。
+>
+> 另外，还需要注意的一点： animate 不支持改变颜色，如果需要改变颜色，需要另外的 jquery 插件。
+
+**jquery 还可以在 animate 上定义相对值**
+
+使用 `+=` 或者 `-=` 来定义相对值。例如：
+
+```javascript
+$('#animate').click(function(){
+   $('#content').animate({width: '+= 200px'});
+});
+```
+
+**jquery animate() 使用队列功能**
+
+如果你编写了多个 `animate()` 方法，`jquery` 会创建包含这些方法的内部队列，各个动画依次执行。
+
+```javascript
+$(document).ready(function(){
+    $('#animate-queen').click(function(){
+        $('div').animate({width: '300px', opacity: '0.5'},'slow');
+        $('div').animate({height: '300px', opacity: '1'},'slow');
+        $('div').animate({width: '100px', opacity: '0.5'},'slow');
+        $('div').animate({height: '100px', opacity: '1'},'slow');
+    });
+});
+```
+
+```html
+<div id="app">
+
+</div>
+<br>
+<button id="animate-queen">执行队列动画</button>
+```
+
+![](../../99-ImageHouse/jquery/2.gif)
 
