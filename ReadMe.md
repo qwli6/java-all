@@ -281,6 +281,11 @@
 - NodeJs 篇
 - Html 篇
 - CSS3 篇
+- JQuery 篇
+  - [JQuery入门](11-前端技能/05-JQuery/00-JQuery入门.md)
+  - [JQuery事件](11-前端技能/05-JQuery/01-JQuery事件.md)
+  - [JQuery效果](11-前端技能/05-JQuery/02-JQuery效果.md)
+  - [JQuery获取内容和属性](11-前端技能/05-JQuery/03-JQuery获取内容和属性.md)
 
 ------
 
