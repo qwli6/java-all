@@ -245,3 +245,52 @@ $(document).ready(function(){
 
 ![](../../99-ImageHouse/jquery/2.gif)
 
+#### JQuery 停止动画
+
+`JQuery` 中的 `stop()`用于在动画完成前对动画进行停止。它适用于所有 `JQuery` 效果函数，包括滑动，淡入淡出和自定义动画。
+
+语法：
+
+```javascript
+// 可选的 stopAll 参数规定是否应该清除动画，默认为 false，即仅仅只停止当前的动画，队列后的动画可以执行。
+// 可选的 goToEnd 参数规定是否立即完成当前的动画，默认是 false。
+$(selector).stop(stopAll, goToEnd);
+```
+
+ #### JQuery Callback
+
+`Callback` 函数在当前动画 `100%` 完成之后执行。
+
+例如：
+
+```javascript
+$(document).ready(function(){
+    $('#button').click(function(){
+        $('p').hide(1000, function(){
+            alert('隐藏后我在执行');
+        });
+    }) ;
+});
+```
+
+**先执行隐藏动画，后执行回调。**
+
+![](../../99-ImageHouse/jquery/3.gif)
+
+如果不写回调函数，那么 `alert` 将先于隐藏动画之前执行。
+
+例如：
+
+```javascript
+$(document).ready(function(){
+    $('#button').click(function(){
+        //           $('p').hide(1000, function(){
+        //               alert('隐藏后我在执行');
+        //           });
+        $('p').hide(1000);
+        alert('我先弹出来再说');
+    }) ;
+});
+```
+
+![](../../99-ImageHouse/jquery/4.gif)
