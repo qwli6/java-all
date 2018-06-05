@@ -279,6 +279,8 @@
   - [Vue2 事件处理](11-前端技能/07-Vue.js/09-Vue2事件处理.md)
   - Vue 使用路由
 - NodeJs 篇
+- Ajax异步请求
+  - [Ajax异步请求](11-前端技能/04-Ajax异步请求/00-Ajax异步请求.md)
 - Html 篇
 - CSS3 篇
 - JQuery 篇
