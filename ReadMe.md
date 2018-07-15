@@ -1,8 +1,6 @@
-## Coding-Interview-Notes
+<h1><a href="">Learn for learning !</a></h1>
 
-<a href="">Learn for learning !</a>
-
-
+> 一份不甘于做一个平庸的码农学习计划。
 
 |  I   |  II  | III  |   IV   |  V   |   VI   | VII  | VIII |  IX  |  X   |
 | :--: | :--: | :--: | :----: | :--: | :----: | :--: | :--: | :--: | :--: |
