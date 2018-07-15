@@ -1,32 +1,12 @@
 ## Coding-Interview-Notes
 
-我是李启文，一个三流本科学校毕业的学生，于 2016 年 7 月 1 日正式毕业。2016 年 3 月 1 号就职于一家创业公司担任 Android 开发工程师至今，大学所学专业是**计算机科学与技术**，会写点后端，也会写点前端，最近在折腾着前后端分离的事情，不得不感慨：前端真的比后端难学！
+<a href="">Learn for learning !</a>
 
 
 
-前后端分离的作品：[点我试试](http://www.lqwit.com)，取名为**码农全家桶**，想知道是干什么的么？[点这里]()
-
-- 关于 [码农全家桶](http://www.lqwit.com)，后端 API 代码在[这里](http://www.baidu.com)
-- 关于 [码农全家桶](http://www.lqwit.com)，前端页面源码在[这里]()
-
-
-
-同时我给 [码农全家桶](http://www.lqwit) 开放了 API 接口，如果你有兴趣，可以酌情使用一下我的接口。
-
-- [测试接口]()
-- [测试接口文档]()
-
-
-
-> 各位大神：
->
-> 由于网站是个人开发，服务器配置过低，还请各位大神高抬贵手，不要搞恶意破坏，感激不尽！如果有 Bug 发现，还请在 [这里]() 给我提出来，我一定尽快修复！
-
-
-
-**「现已离职，正在全心全意面试找工作中…..」**
-
-------
+|  I   |  II  | III  |   IV   |  V   |   VI   | VII  | VIII |  IX  |  X   |
+| :--: | :--: | :--: | :----: | :--: | :----: | :--: | :--: | :--: | :--: |
+| Java | web  | 框架 | 虚拟机 | 并发 | 数据库 | 算法 |  OS  | 网络 | 面试 |
 
 
 
@@ -204,47 +184,7 @@
 
 
 
-### 六、移动开发篇
-
-- Activity 与 Fragment 的生命周期
-- Activity 的四种启动模式与特点
-- Activity 缓存方法
-- Service 的声明周期，两种启动方法，有什么区别
-- 怎么保证 Service 不被杀死
-- 广播的两种注册方式，有什么区别
-- Intent 的使用方法，可以传递那些数据类型。为什么 Intent 传递的数据类型对象都要实现 Parcelable
-- ContentProvider 使用方法
-- Thread、AsycTask、IntentService 的使用场景与特点
-- 五种基本布局：FrameLayout，LinearLayout，AbsoluteLayout，RelativeLayout，TableLayout 各自的特点以及绘制效率对比
-- Android 的数据存储形式
-- Sqlite 的基本操作
-- Android 中的 MVC 模式
-- Merge、ViewStub 的作用
-- Json 有什么优劣势
-- 动画有哪几类？各有什么特点
-- Handler、Loop 消息队列模型，各部分的作用
-- 怎样退出终止 App
-- Asset 目录与 res 目录的区别
-- Android 怎么加速启动 Activity
-- Android 的内存优化：ListView 优化，及时关闭资源，图片缓存等
-- Android 中弱引用与软引用的应用场景
-- Bitmap 的四种属性，与每种属性对应的大小
-- View 与 ViewGroup 分类。自定义 View 过程：onMeasure()， onLayout()，onDraw()
-- Touch 事件分发机制
-- Android 长连接，怎么处理心跳机制
-- Zygote 的启动过程
-- Android IPC：Binder 原理
-- 你用过什么框架，是否看过源码，是否知道底层原理
-- Android 5.0 新特性
-- Android 6.0 新特性
-- Android 7.0 新特性
-- Android 8.0 新特性
-
-------
-
-
-
-### 七、后端框架篇
+### 六、后端框架篇
 
 - Hibernate
   - [hibernate 框架开发入门]()
@@ -288,41 +228,3 @@
   - [JQuery事件](11-前端技能/05-JQuery/01-JQuery事件.md)
   - [JQuery效果](11-前端技能/05-JQuery/02-JQuery效果.md)
   - [JQuery获取内容和属性](11-前端技能/05-JQuery/03-JQuery获取内容和属性.md)
-
-------
-
-
-
-### 九、版本控制与项目构建工具
-
-- SVN
-- Git
-- Maven
-- Gradle
-
-------
-
-
-
-### 十、项目相关
-
-
-> 推荐书籍
-> 
-> 《疯狂 Android 讲义》
-> 
-> 《深入理解 Android》
-> 
-> 《Android 开发艺术探索》
-> 
-> 《Android 源码设计模式分析与实践》
-> 
-
-------
-
-
-
-### 十一、面试相关问题总结
-
-
-
