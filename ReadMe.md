@@ -12,11 +12,11 @@
 
 |     I     |    II    |    III    |     IV      |     V     |     VI      |    VII    |     VIII      |    IX     |     X     |
 | :-------: | :------: | :-------: | :---------: | :-------: | :---------: | :-------: | :-----------: | :-------: | :-------: |
-| Java<br>📈 | web<br>🌐 | 框架<br>⚔ | 虚拟机<br>⚙ | 并发<br>⛓ | 数据库<br>🗄 | 算法<br>🔐 | 操作系统<br>📺 | 网络<br>📡 | 面试<br>📧 |
+| JAVA<br>📈 | WEB<br>🌐 | FRAMEWORK<br>⚔ |JVM<br>⚙ | CONCURRENT<br>⛓ | DATABASE<br>🗄 | ALGORITHM<br>🔐 | OS<br>📺 | NETWORK<br>📡 | INTERVIEW<br>📧 |
 
 ## CATEGORY
 
-### 一、JAVA BASIC
+### 1.JAVA
 - [Java 中的八种基本数据类型，以及它们的封装类]()
 - [switch 能否用 String 做参数]()
 - [equals 与 == 的区别]()
@@ -55,27 +55,9 @@
 - 常用的设计模式：单例、工厂、适配器、责任链、观察者等
 - JNI ( Java Native Interface ) 的使用
 
-
-> 推荐书籍
-> 
-> 《Java 核心技术卷I》
-> 
-> 《Java 核心技术卷II》
-> 
-> 《Thinking in Java》
-> 
-> 《Java 并发编程实战》
-> 
-> 《Effective Java》
-> 
-> 《Head First 设计模式》
-> 
-> 《写给大忙人看的 Java SE 8》
-> 
-
 ------
 
-### 二、JVM 篇
+### 2.JVM
 
 - 内存模式以及分区，需要详细到每个区放什么
 - 堆里面的分区：Eden、survival from to、老年代各自的特点
@@ -89,15 +71,7 @@
 - 双亲委派模型：Bootstrap ClassLoader、Extension ClassLoader、ApplicationClassLoader
 - 分配：静态分派与动态分派
 
-
-> 推荐书籍
-> 
-> 《深入理解 Java 虚拟机》
-> 
-
-
-
-## 三、操作系统篇
+## 3.OS
 
 - 进程和线程的区别
 - 死锁的必要条件，怎么处理死锁
@@ -107,16 +81,9 @@
 - 什么是虚拟内存
 - 虚拟地址、逻辑地址、线性地址、物理地址的区别
 
-> 推荐书籍
-> 
-> 《深入理解现代操作系统》
-> 
-
 ------
 
-
-
-### 四、网络篇
+### 4.NETWORK
 
 - OSI 与 TCP/IP 各层的结构与功能，都有那些协议
 - TCP 与 UDP 的区别
@@ -136,17 +103,9 @@
 - IP 地址分类
 - 路由器与交换机区别
 
->推荐书籍
->
->《TCP/IP 协议族》
->
->《TCP/IP 详解 卷I：协议》
-
 ------
 
-
-
-### 五、数据结构与算法篇
+### 5.Algorithm
 
 - 链表与数组
 - 队列和栈，出栈与入栈
@@ -165,29 +124,9 @@
 - 动态规划、贪心算法、分治算法
 - 大数据处理：类似 10 亿条数据找出最大的 1000 个数
 
-> 刷题网站
-> 
-> 1. 牛客网
-> 
-> 2. leetcode
-> 
-> 3. 剑指 offer
->
-> 
-> 推荐书籍
-> 
-> 1.《大话数据结构》
-> 
-> 2.《剑指 offer》
-> 
-> 3.《编程之美》
-> 
-
 ------
 
-
-
-### 六、后端框架篇
+### 6.FRAMEWORK
 
 - Hibernate
   - [hibernate 框架开发入门]()
@@ -205,7 +144,7 @@
 
 ------
 
-### 八、前端开发篇
+### 7.Front Faces
 
 - Vue 篇
   - [Vue2 入门](11-前端技能/07-Vue.js/00-Vue2入门.md)
