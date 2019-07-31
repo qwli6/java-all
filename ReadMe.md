@@ -1,4 +1,4 @@
-<h1><a href="">Learn for learning !</a></h1>
+# LEARN NOTES FOR INTERVIEW
 
 
 ## HOWTO?
@@ -6,17 +6,17 @@
 
 ## WHATIS?
 
-> 一份不甘平庸的学习计划。
+> Learning plan for interview
 >
-> 学习内容主要来自于书籍，源码和官方的文档解释。
+> Learning content mainly comes from books, source code and official document interpretation.
 
-|     I     |    II    |    III    |     IV      |     V     |     VI      |    VII    |     VIII      |    IX     |     X     |
+|     Section I     |    Section II    |    Section III    |     Section IV      |     Section V     |     Section VI      |    Section VII    |     Section VIII      |    Section IX     |     Section X     |
 | :-------: | :------: | :-------: | :---------: | :-------: | :---------: | :-------: | :-----------: | :-------: | :-------: |
-| JAVA<br>📈 | WEB<br>🌐 | FRAMEWORK<br>⚔ |JVM<br>⚙ | CONCURRENT<br>⛓ | DATABASE<br>🗄 | ALGORITHM<br>🔐 | OS<br>📺 | NETWORK<br>📡 | INTERVIEW<br>📧 |
+| java<br>📈 | web<br>🌐 | framework<br>⚔ |jvm<br>⚙ | concurrent<br>⛓ | database<br>🗄 | algorithm<br>🔐 | os<br>📺 | network<br>📡 | interview<br>📧 |
 
-## CATEGORY
+## NOTES CATEGORY
 
-### 1.JAVA
+#### 1.JAVA
 - [Java 中的八种基本数据类型，以及它们的封装类]()
 - [switch 能否用 String 做参数]()
 - [equals 与 == 的区别]()
@@ -57,7 +57,7 @@
 
 ------
 
-### 2.JVM
+#### 2.JVM
 
 - 内存模式以及分区，需要详细到每个区放什么
 - 堆里面的分区：Eden、survival from to、老年代各自的特点
@@ -71,7 +71,7 @@
 - 双亲委派模型：Bootstrap ClassLoader、Extension ClassLoader、ApplicationClassLoader
 - 分配：静态分派与动态分派
 
-## 3.OS
+#### 3.OS
 
 - 进程和线程的区别
 - 死锁的必要条件，怎么处理死锁
@@ -83,7 +83,7 @@
 
 ------
 
-### 4.NETWORK
+#### 4.NETWORK
 
 - OSI 与 TCP/IP 各层的结构与功能，都有那些协议
 - TCP 与 UDP 的区别
@@ -105,7 +105,7 @@
 
 ------
 
-### 5.Algorithm
+#### 5.ALGORITHM
 
 - 链表与数组
 - 队列和栈，出栈与入栈
@@ -126,7 +126,7 @@
 
 ------
 
-### 6.FRAMEWORK
+#### 6.FRAMEWORK
 
 - Hibernate
   - [hibernate 框架开发入门]()
@@ -144,7 +144,7 @@
 
 ------
 
-### 7.Front Faces
+#### 7.FRONT-END
 
 - Vue 篇
   - [Vue2 入门](11-前端技能/07-Vue.js/00-Vue2入门.md)
@@ -168,7 +168,5 @@
   - [JQuery事件](11-前端技能/05-JQuery/01-JQuery事件.md)
   - [JQuery效果](11-前端技能/05-JQuery/02-JQuery效果.md)
   - [JQuery获取内容和属性](11-前端技能/05-JQuery/03-JQuery获取内容和属性.md)
-  
-  
   
   ## OTHER
