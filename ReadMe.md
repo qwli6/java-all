@@ -10,7 +10,7 @@
 >
 > Learning content mainly comes from books, source code and official document interpretation.
 
-|     Section I     |    Section II    |    Section III    |     Section IV      |     Section V     |     Section VI      |    Section VII    |     Section VIII      |    Section IX     |     Section X     |
+|     Part1     |    Part2    |    Part3    |    Part4 |     Part5     |    Part6 |    Part7    |    Part8 |  Part9 |     Part10     |
 | :-------: | :------: | :-------: | :---------: | :-------: | :---------: | :-------: | :-----------: | :-------: | :-------: |
 | java<br>📈 | web<br>🌐 | framework<br>⚔ |jvm<br>⚙ | concurrent<br>⛓ | database<br>🗄 | algorithm<br>🔐 | os<br>📺 | network<br>📡 | interview<br>📧 |
 
@@ -114,7 +114,7 @@
 - Hash 表的 hash 函数，冲突解决方法有哪些
 - 各种排序：冒泡，选择，插入，希尔，归并，快排，堆排，桶排，基数的原理，平均时间复杂度，最坏时间复杂度、空间复杂度，是否稳定
 - 快排的 partition 函数与归并的 Merge 函数
-- 对冒泡与快拍的改进
+- 对冒泡与快排的改进
 - 二分查找，与变种二分查找
 - 二叉树，B+ 树， AVL 树，红黑树、哈弗曼树
 - 二叉树的前中后序遍历：递归与非递归写法，层序遍历算法
@@ -160,6 +160,7 @@
   - Vue 使用路由
 - NodeJs 篇
 - Ajax异步请求
+  
   - [Ajax异步请求](11-前端技能/04-Ajax异步请求/00-Ajax异步请求.md)
 - Html 篇
 - CSS3 篇
