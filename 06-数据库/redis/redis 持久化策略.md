@@ -35,10 +35,29 @@ dir ./
 
 如果在新的快照创建完毕之前，Redis、系统、或者硬件三者之中的任意一个崩溃了，那么 Redis 将丢失最近一次创建快照之后写入的数据。
 
+> 基于 6.0 默认的快照配置
+
+```properties
+#   In the example below the behaviour will be to save:
+#   900 秒内至少有 1 个 key 被改变
+#   after 900 sec (15 min) if at least 1 key changed
+#   300 秒内至少有 10 个 key 被改变
+#   after 300 sec (5 min) if at least 10 keys changed
+#   60 秒内至少有 10000 个 key 被改变
+#   after 60 sec if at least 10000 keys changed
+save 900 1
+save 300 10
+save 60 10000
+stop-writes-on-bgsave-error yes
+rdbcompression yes
+dbfilename dump.rdb
+dir ./
+```
+
 **2.创建快照的方式**
 
 - （手动）客户端可以通过向 Redis 发送 BGSAVE 命令来创建一个快照。对于支持 BGSAVE 的平台来说（除开 Windows），Redis 会调用 fork 来创建一个子进程，由子进程完成快照的写入工作。
-- （手动）客户端也可以向 Redis 发送一个 SAVE 命令来创建一个快照，接到 SAVE 命令后，Redis 在快照创建完毕之前，将不会响应任何其他的命令。SAVE 命令用的不多，通常在没有足够的内存去执行 BGSAVE 的情况下才会去使用 SAVE 命令来创建快照。
+- （手动）客户端也可以向 Redis 发送一个 SAVE 命令来创建一个快照，接到 SAVE 命令后，Redis 在快照创建完毕之前，将不会响应任何其他的命令。**SAVE 命令用的不多，通常在没有足够的内存去执行 BGSAVE 的情况下才会去使用 SAVE 命令来创建快照**。
 - 如果用户配置了 save 选项，当且仅当 60 秒内有 10000 次写入的情况下，Redis 会自动触发 BGSAVE 指令来创建快照。
   - 如果用户配置了多个 save 选项，那么只要有一个 save 条件满足，Redis 就会触发一次 BGSAVE 指令来创建快照。
 - 当 Redis 收到 SHUTDOWN 指令时，或者接受到标准的 TERM（终止） 指令时，Redis 将不再处理其他请求，会执行 SAVE 指令，创建快照完毕后，关闭服务器。
@@ -76,6 +95,31 @@ dir ./
 简单来说，AOF 创建的方式会将被执行的命令写入到 AOF 文件的末尾，以此来记录数据发生的变化。因此在出现崩溃的情况下，Redis 只要从头到尾执行一遍 AOF 文件里面包含的所有写命令，就可以恢复 AOF 文件所记录的数据集。
 
 AOF 通过 appendonly yes 配置选项来打开。
+
+
+
+> 基于 redis6.0 默认的 Appending only mode
+
+```properties
+# AOF and RDB persistence can be enabled at the same time without problems.
+# If the AOF is enabled on startup Redis will load the AOF, that is the file
+# with the better durability guarantees.
+appendonly no
+# 默认的 aof 文件名称
+appendfilename "appendonly.aof"
+
+# no: don't fsync, just let the OS flush the data when it wants. Faster.
+# always: fsync after every write to the append only log. Slow, Safest.
+# everysec: fsync only one time every second. Compromise.
+# appendfsync always
+appendfsync everysec
+# appendfsync no
+no-appendfsync-on-rewrite no
+auto-aof-rewrite-percentage 100
+auto-aof-rewrite-min-size 64mb
+```
+
+
 
 **2.appendfsync 可配置的选项值**
 
