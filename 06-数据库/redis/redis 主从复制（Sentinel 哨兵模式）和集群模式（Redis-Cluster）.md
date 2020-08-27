@@ -53,7 +53,7 @@
 
 ## Redis 是否支持主主复制（master/master replication）
 
-Redis 不支持主主复制。主主复制会导致数据混乱
+**Redis 不支持主主复制**。主主复制会导致数据混乱
 
 
 

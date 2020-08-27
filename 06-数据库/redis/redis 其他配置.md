@@ -42,6 +42,45 @@ OK
 
 如果切换到了不存在 db， redis 会报错。
 
+> 默认使用的 db 是 db0，至于为什么是 db0，根据 SpringDataRedis 的类 JedisConnectionFactory 中的 org.springframework.data.redis.connection.jedis.JedisConnectionFactory#getDatabase 显示 database 它是一个 int 类型，并不是包装类型，如果没有设置值，那么默认操作就是 db0，
+
+```java
+public int getDatabase() {
+   RedisConfiguration var10000 = this.configuration;
+   RedisStandaloneConfiguration var10001 = this.standaloneConfig;
+   var10001.getClass();
+  //从 var10000 里面取或者从 var10001 里面的 getDatabase 方法里面取
+   return RedisConfiguration.getDatabaseOrElse(var10000, var10001::getDatabase); 
+}
+
+//先看 RedisStandaloneConfiguration 里面的 getDatabase 方法
+public int getDatabase() {
+    return this.database; //这里不出意外就是 0，如果不调用 set 方法的话
+}
+
+//再看看 RedisConfiguration 的 getDatabaseOrElse 方法
+static Integer getDatabaseOrElse(@Nullable RedisConfiguration configuration, Supplier<Integer> other) {
+    Assert.notNull(other, "Other must not be null!");
+    return isDatabaseIndexAware(configuration) ? ((RedisConfiguration.WithDatabaseIndex)configuration).getDatabase() : (Integer)other.get();
+}
+
+//就是看 configuration 实现类的 getDatabase 方法，你会发现无论是哨兵或者集群，都直接/间接的取到了 int 类型的 database，所以默认不设置值 ，就是操作的 db0
+// 集群模式
+// RedisClusterConfiguration
+// 哨兵模式
+// RedisSentinelConfiguration
+```
+
+**1.如何操作其他的 db?**
+
+自定义配置，继承对应的 configuration 实现类，重写 getDatabase 方法就好。如果理解够深，可以直接自己写一个 configuration 的实现。
+
+或者在 JedisConnectionFactory 里面调用 setDatabase 覆盖默认配置
+
+> 在切换 db 的时候，要注意不要切换到不存在的 db 上去了。
+
+
+
 ## 4.查看 redis db 信息
 
 使用 info keyspace 可以查看数据库的 key 信息，
@@ -62,9 +101,24 @@ db0:keys=8654,expires=20,avg_ttl=21066294826
 
 > 注意: 使用 info keyspace 查看的是所有数据库的 key 信息，切换到不同的数据库，获取的 key 信息相同。
 
+## 5.查看 redis 内存信息
 
+使用 info memory 可以查看数据库的内存信息。
 
+```shell
+127.0.0.1:6379> info memory
+# Memory
+used_memory:4850830296
+used_memory_human:4.52G
+used_memory_rss:5264429056
+used_memory_peak:5309512376
+used_memory_peak_human:4.94G
+used_memory_lua:36864
+mem_fragmentation_ratio:1.09
+mem_allocator:jemalloc-3.6.0
+```
 
+> 直接输入 info 可以看到全部的配置信息
 
 ## Redis 和 memcached 的比较
 
