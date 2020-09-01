@@ -371,7 +371,7 @@ final Node<K,V>[] resize() {
 
 
 
-- 
+**Map 里面存放对象的话，需要重写 hashCode 方法和 equals 方法**
 
 
 

@@ -1,0 +1,16 @@
+#!/usr/bin/expect
+
+set TERMSERV 10.28.10.121
+set USER 20013847
+set PASSWORD Lppz@517
+
+# 登录跳板机
+spawn ssh -p60022 $USER@$TERMSERV
+expect {
+        "yes/no" {send "yes\r";exp_continue;}
+         "*password:*" { send "$PASSWORD\r" }
+        }
+# 登录内网
+expect "*usmshell*" {send "open 272\r"}
+interact
+

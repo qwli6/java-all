@@ -26,7 +26,8 @@
 - [ArrayList、LinkedList、Vector 的区别]()
 - [String、StringBuffer 与 StringBuilder 的区别]()
 - [Map、Set、List、Queue、Stack 的特点与用法]()
-- [HashMap 和 HashTable 的区别]()
+- Map 接口典型实现类源码分析
+  - [hashMap 源码分析之初始化，扩容时机](https://dailypaper.cn/article/hashmap-initial)
 - [HashMap 和 ConcurrentHashMap 的区别，HashMap 的底层源码]()
 - [TreeMap、HashMap、LinkedHashMap 的区别]()
 - [Collection 包结构，与 Collections 的区别]()
