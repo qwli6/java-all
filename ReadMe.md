@@ -75,7 +75,7 @@
 
 #### 3.OS
 
-- 进程和线程的区别
+- [进程和线程的区别](https://dailypaper.cn/article/process-and-thread)
 - 死锁的必要条件，怎么处理死锁
 - Window 内存管理方式：段存储、页存储、段页存储
 - 进程的几种状态
@@ -130,46 +130,12 @@
 
 #### 6.FRAMEWORK
 
-- Hibernate
-  - [hibernate 框架开发入门]()
-  - [hibernate 事务以及丢失更新问题]()
-  - [hibernate 级联删除以及级联更新问题]()
-  - [hibernate 关于单表查询的几种方式]()
-  - [hibernate 关于多表的查询]()
-
 - Spring
 - SpringMVC
-- Shiro
 - Dubbo
 - Redis
+  - [Redis 事务](https://dailypaper.cn/article/redis-transaction)
+  - [Redis 持久化策略](https://dailypaper.cn/article/redis-snapshot-aof)
 - Mybatis
 
-------
-
-#### 7.FRONT-END
-
-- Vue 篇
-  - [Vue2 入门](11-前端技能/07-Vue.js/00-Vue2入门.md)
-  - [Vue2 定义组件](11-前端技能/07-Vue.js/01-Vue2定义组件.md)
-  - [Vue2 生命周期](11-前端技能/07-Vue.js/02-Vue2生命周期.md)
-  - [Vue2 模板语法之插值](11-前端技能/07-Vue.js/03-Vue2模板语法之插值.md)
-  - [Vue2 模板语法之指令](11-前端技能/07-Vue.js/04-Vue2模板语法之指令.md)
-  - [Vue2 计算属性和侦听](11-前端技能/07-Vue.js/05-Vue2计算属性和侦听.md)
-  - [Vue2 绑定 Class 和 Style](11-前端技能/07-Vue.js/06-Vue2绑定Class和Style.md)
-  - [Vue2 条件渲染](11-前端技能/07-Vue.js/07-Vue2条件渲染.md)
-  - [Vue2 列表渲染](11-前端技能/07-Vue.js/08-Vue2列表渲染.md)
-  - [Vue2 事件处理](11-前端技能/07-Vue.js/09-Vue2事件处理.md)
-  - Vue 使用路由
-- NodeJs 篇
-- Ajax异步请求
-  
-  - [Ajax异步请求](11-前端技能/04-Ajax异步请求/00-Ajax异步请求.md)
-- Html 篇
-- CSS3 篇
-- JQuery 篇
-  - [JQuery入门](11-前端技能/05-JQuery/00-JQuery入门.md)
-  - [JQuery事件](11-前端技能/05-JQuery/01-JQuery事件.md)
-  - [JQuery效果](11-前端技能/05-JQuery/02-JQuery效果.md)
-  - [JQuery获取内容和属性](11-前端技能/05-JQuery/03-JQuery获取内容和属性.md)
-  
-  ## OTHER
+## OTHER
