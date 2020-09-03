@@ -70,7 +70,7 @@
 
 ### Java 多线程
 
-- 线程池的工作原理](https://dailypaper.cn/article/threadpool)
+- [线程池的工作原理](https://dailypaper.cn/article/threadpool)
 
 
 
@@ -126,7 +126,7 @@
 
 ### 算法相关内容
 
-- 链表与数组
+- [链表与数组](https://dailypaper.cn/article/333)
 - 队列和栈，出栈与入栈
 - 链表的删除、插入、反向
 - 字符串操作
@@ -135,6 +135,8 @@
 - 快排的 partition 函数与归并的 Merge 函数
 - 对冒泡与快排的改进
 - 二分查找，与变种二分查找
+  - 二分查找
+  - 变种二分查找
 - 二叉树，B+ 树， AVL 树，红黑树、哈弗曼树
 - 二叉树的前中后序遍历：递归与非递归写法，层序遍历算法
 - 图的 BFS 与 DFS 算法，最小生成树 prim 算法与最短路径 Dijkstra 算法
