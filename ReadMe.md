@@ -1,4 +1,4 @@
-# LEARN NOTES FOR INTERVIEW
+<h1 style='text-align:center'>学习笔记</h1>
 
 
 ## HOWTO?
@@ -14,9 +14,10 @@
 | :-------: | :------: | :-------: | :---------: | :-------: | :---------: | :-------: | :-----------: | :-------: | :-------: |
 | java<br>📈 | web<br>🌐 | framework<br>⚔ |jvm<br>⚙ | concurrent<br>⛓ | database<br>🗄 | algorithm<br>🔐 | os<br>📺 | network<br>📡 | interview<br>📧 |
 
-## NOTES CATEGORY
+## 笔记分类
 
-#### 1.JAVA
+### 1. Java 基础部分
+
 - [Java 中的八种基本数据类型，以及它们的封装类]()
 - [switch 能否用 String 做参数]()
 - [equals 与 == 的区别]()
@@ -26,9 +27,6 @@
 - [ArrayList、LinkedList、Vector 的区别]()
 - [String、StringBuffer 与 StringBuilder 的区别]()
 - [Map、Set、List、Queue、Stack 的特点与用法]()
-- Map 接口典型实现类源码分析
-  - [hashMap 源码分析之初始化，扩容时机](https://dailypaper.cn/article/hashmap-initial)
-  - [HashMap 原理之存储结构](https://dailypaper.cn/article/hashmap-storage-structure)
 - [HashMap 和 ConcurrentHashMap 的区别，HashMap 的底层源码]()
 - [TreeMap、HashMap、LinkedHashMap 的区别]()
 - [Collection 包结构，与 Collections 的区别]()
@@ -59,7 +57,19 @@
 
 ------
 
-#### 2.JVM
+
+
+### Java 部分内容源码分析（基于 jdk8）
+
+- Map 接口典型实现类源码分析
+  - [hashMap 源码分析之初始化，扩容时机](https://dailypaper.cn/article/hashmap-initial)
+  - [HashMap 原理之存储结构](https://dailypaper.cn/article/hashmap-storage-structure)
+- List 接口典型实现类源码解析
+- Set 接口典型实现类源码解析
+
+
+
+### Java 虚拟机
 
 - 内存模式以及分区，需要详细到每个区放什么
 - 堆里面的分区：Eden、survival from to、老年代各自的特点
@@ -73,7 +83,7 @@
 - 双亲委派模型：Bootstrap ClassLoader、Extension ClassLoader、ApplicationClassLoader
 - 分配：静态分派与动态分派
 
-#### 3.OS
+### 操作系统相关
 
 - [进程和线程的区别](https://dailypaper.cn/article/process-and-thread)
 - 死锁的必要条件，怎么处理死锁
@@ -85,7 +95,7 @@
 
 ------
 
-#### 4.NETWORK
+### 计算机网络相关
 
 - OSI 与 TCP/IP 各层的结构与功能，都有那些协议
 - TCP 与 UDP 的区别
@@ -107,7 +117,7 @@
 
 ------
 
-#### 5.ALGORITHM
+### 算法相关内容
 
 - 链表与数组
 - 队列和栈，出栈与入栈
@@ -128,14 +138,18 @@
 
 ------
 
-#### 6.FRAMEWORK
+### 数据库相关内容
+
+- Redis
+  - [Redis 事务](https://dailypaper.cn/article/redis-transaction)
+  - [Redis 持久化策略](https://dailypaper.cn/article/redis-snapshot-aof)
+
+
+
+### 框架相关
 
 - Spring
 - SpringMVC
 - Dubbo
-- Redis
-  - [Redis 事务](https://dailypaper.cn/article/redis-transaction)
-  - [Redis 持久化策略](https://dailypaper.cn/article/redis-snapshot-aof)
 - Mybatis
 
-## OTHER
