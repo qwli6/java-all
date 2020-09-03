@@ -1,5 +1,6 @@
 <h1 style='text-align:center'>学习笔记</h1>
 
+> 源码部分的解析均是基于 jdk8
 
 ## HOWTO?
 
@@ -42,7 +43,7 @@
 -  锁的等级：方法锁、对象锁、类锁
 -  写出生产者消费者模式
 -  ThreadLocal 的设计理念与作用
--  ThreadPool 用法与优势
+-  线程池的工作原理
 -  Concurrent 包中的其他东西： ArrayBlockingQueue，CountDownLatch 等
 -  wait() 和 sleep() 的区别
 -  foreach 与正常 for 循环效率对比
@@ -66,6 +67,12 @@
   - [HashMap 原理之存储结构](https://dailypaper.cn/article/hashmap-storage-structure)
 - List 接口典型实现类源码解析
 - Set 接口典型实现类源码解析
+
+### Java 多线程
+
+- 线程池的工作原理](https://dailypaper.cn/article/threadpool)
+
+
 
 
 
