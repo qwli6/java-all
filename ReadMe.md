@@ -45,7 +45,10 @@
 - [interface 与 abstract 的区别]()
 - [static class 和 non static class 的区别]()
 - [Java 多态的实现原理]()
-- [实现多线程的两种方法：Thread 与 Runable]()
+- ~~[实现多线程的两种方法：Thread 与 Runable]()~~ 见[线程池实现原理](https://dailypaper.cn/article/threadpool)（三种实现线程的方式）
+  - 继承 Thread 类，实现 run 方法，**无**返回值
+  - 实现 Runable 接口 ，实现 run 方法，**无**返回值
+  - 实现 Callable 接口，实现 call 方法，**有**返回值 Future 类型
 -  线程同步的方法：sychronized、lock、reentrantLock 等
 -  锁的等级：方法锁、对象锁、类锁
 -  写出生产者消费者模式
@@ -73,6 +76,8 @@
 - Map 接口典型实现类源码分析
   - [hashMap 源码分析之初始化，扩容时机](https://dailypaper.cn/article/hashmap-initial)
   - [HashMap 原理之存储结构](https://dailypaper.cn/article/hashmap-storage-structure)
+  - HashMap 面试题
+    - [准备使用 HashMap 存储 1w 条数据，构造方法传入 1w 会触发扩容吗？传入 1k 呢?](01-java 基础/准备用HashMap存储 1w 条数据，构造方法传入 1w 进去会触发扩容吗.md)
 - List 接口典型实现类源码解析
 - Set 接口典型实现类源码解析
 
@@ -162,13 +167,18 @@
 - Redis
   - [Redis 事务](https://dailypaper.cn/article/redis-transaction)
   - [Redis 持久化策略](https://dailypaper.cn/article/redis-snapshot-aof)
-
-
+  - Redis 基本数据类型
+  - Redis 主从同步，哨兵，集群模式
 
 ### 框架相关
 
-- Spring
-- SpringMVC
+- Spring&SpringBoot&SpringMVC
+  - FactoryBean 和 BeanFactory 的区别
+  - SpringMVC 执行流程
+  - Spring 中使用了哪些设计模式
+    - 工厂模式 BeanFactory
+    - 代理模式，基于 Jdk 的动态代理和 cglib 代理
+    - 观察者模式（事件和监听）
 - Dubbo
 - Mybatis
 
