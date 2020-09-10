@@ -50,7 +50,8 @@
 -  锁的等级：方法锁、对象锁、类锁
 -  写出生产者消费者模式
 -  ThreadLocal 的设计理念与作用
--  线程池的工作原理
+- 线程池的工作原理
+  -  [线程池的工作原理，包含初始化参数，拒绝策略等，基于 1.8 的源码分析](https://dailypaper.cn/article/threadpool)
 -  Concurrent 包中的其他东西： ArrayBlockingQueue，CountDownLatch 等
 -  wait() 和 sleep() 的区别
 -  foreach 与正常 for 循环效率对比
@@ -140,10 +141,11 @@
 - Hash 表的 hash 函数，冲突解决方法有哪些
 - 各种排序：冒泡，选择，插入，希尔，归并，快排，堆排，桶排，基数的原理，平均时间复杂度，最坏时间复杂度、空间复杂度，是否稳定
   - [冒泡排序](https://dailypaper.cn/article/bubble-sort)
+  - [选择排序](https://dailypaper.cn/article/select-sort)
 - 快排的 partition 函数与归并的 Merge 函数
 - 对冒泡与快排的改进
 - 二分查找，与变种二分查找
-  - 二分查找
+  - [二分查找-本地文档，比较简单，没有放在博客上](07-算法/二分查找.md)
   - 变种二分查找
 - 二叉树，B+ 树， AVL 树，红黑树、哈弗曼树
 - 二叉树的前中后序遍历：递归与非递归写法，层序遍历算法
