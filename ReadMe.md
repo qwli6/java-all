@@ -52,7 +52,7 @@
 -  线程同步的方法：sychronized、lock、reentrantLock 等
 -  锁的等级：方法锁、对象锁、类锁
 -  写出生产者消费者模式
--  [ThreadLocal 的设计理念与作用](01-java 基础/ThreadLocal的原理和作用.md)
+-  [ThreadLocal 的设计理念与作用](01-java基础/ThreadLocal的原理和作用.md)
 - 线程池的工作原理
   -  [线程池的工作原理，包含初始化参数，拒绝策略等，基于 1.8 的源码分析](https://dailypaper.cn/article/threadpool)
 -  Concurrent 包中的其他东西： ArrayBlockingQueue，CountDownLatch 等
