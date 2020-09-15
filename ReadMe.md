@@ -52,7 +52,7 @@
 -  线程同步的方法：sychronized、lock、reentrantLock 等
 -  锁的等级：方法锁、对象锁、类锁
 -  写出生产者消费者模式
--  ThreadLocal 的设计理念与作用
+-  [ThreadLocal 的设计理念与作用](01-java 基础/ThreadLocal的原理和作用.md)
 - 线程池的工作原理
   -  [线程池的工作原理，包含初始化参数，拒绝策略等，基于 1.8 的源码分析](https://dailypaper.cn/article/threadpool)
 -  Concurrent 包中的其他东西： ArrayBlockingQueue，CountDownLatch 等
@@ -84,6 +84,9 @@
 ### Java 多线程
 
 - [线程池的工作原理](https://dailypaper.cn/article/threadpool)
+  - 线程面试题
+    - 如何使两个线程交叉执行打印 hello，线程 1 打印 h，线程 2 打印 e，线程 1 打印 l，线程 2 l，线程 1 打印 e
+      - 利用对象的 wait 和 notify 方法
 
 
 
