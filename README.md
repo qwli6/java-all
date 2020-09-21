@@ -99,7 +99,7 @@
 - GC 的三种手机方法：标记清除、标记整理、复制算法的原理与特点，分别用在什么地方，如果让你优化收集方法，有什么思路
 - GC 收集器有哪些？ CMS 收集器与 G1 收集器的特点
 - Minor GC 与 Full GC 分别在什么时候发生
-- 几种常用的内存调试工具：jmap、jstack、jconsole
+- [几种常用的内存调试工具：jmap、jstack、jconsole](https://dailypaper.cn/article/337)
 - 类加载的五个过程：加载，验证，准备，解析，初始化
 - 双亲委派模型：Bootstrap ClassLoader、Extension ClassLoader、ApplicationClassLoader
 - 分配：静态分派与动态分派
