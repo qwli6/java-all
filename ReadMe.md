@@ -170,8 +170,8 @@
 - Redis
   - [Redis 事务](https://dailypaper.cn/article/redis-transaction)
   - [Redis 持久化策略](https://dailypaper.cn/article/redis-snapshot-aof)
-  - Redis 基本数据类型
-  - Redis 主从同步，哨兵，集群模式
+  - [Redis 基本数据类型](./06-数据库/redis/redis 的基本概念.md)
+  - [Redis 主从同步，哨兵，集群模式](./06-数据库/redis/redis 主从复制（Sentinel 哨兵模式）和集群模式（Redis-Cluster）.md)
 
 ### 框架相关
 
