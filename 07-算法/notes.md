@@ -5,3 +5,45 @@
 
 
 > 大 O 标记法一般都是指**最坏的情况**
+
+
+
+
+
+SpringBoot 静态资源处理见 `org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry#getHandlerMapping`
+
+```java
+@Nullable
+@SuppressWarnings("deprecation")
+protected AbstractHandlerMapping getHandlerMapping() {
+   if (this.registrations.isEmpty()) {
+      return null;
+   }
+
+   Map<String, HttpRequestHandler> urlMap = new LinkedHashMap<>();
+   for (ResourceHandlerRegistration registration : this.registrations) {
+      for (String pathPattern : registration.getPathPatterns()) {
+         ResourceHttpRequestHandler handler = registration.getRequestHandler();
+         if (this.pathHelper != null) {
+            handler.setUrlPathHelper(this.pathHelper);
+         }
+         if (this.contentNegotiationManager != null) {
+            handler.setContentNegotiationManager(this.contentNegotiationManager);
+         }
+         handler.setServletContext(this.servletContext);
+         handler.setApplicationContext(this.applicationContext);
+         try {
+            handler.afterPropertiesSet();
+         }
+         catch (Throwable ex) {
+            throw new BeanInitializationException("Failed to init ResourceHttpRequestHandler", ex);
+         }
+         urlMap.put(pathPattern, handler);
+      }
+   }
+
+   return new SimpleUrlHandlerMapping(urlMap, this.order);
+}
+```
+
+这里实际上就是返回了一个 SimpleUrlHandlerMapping，可以自定义一个用来处理静态资源
