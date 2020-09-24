@@ -6,6 +6,10 @@
 
 
 
+> 部分内容在[博客](https://dailypaper.cn)上，还有一部分内容在 [wiki](https://github.com/selfassu/java-all/wiki) 里面
+
+
+
 # 二、Contents
 
 ## Java 基础
