@@ -243,4 +243,4 @@
 **2. 集合**
 
 1. 准备使用 HashMap 存储 1w 条数据，构造方法传入 1w 会触发扩容吗？传入 1k 呢?
-   1. 解决方案参考：HashMap 源码分析
+   1. 解决方案参考[这里](https://github.com/selfassu/java-all/wiki/HashMap-%E9%9D%A2%E8%AF%95%E9%A2%98%EF%BC%9A%22%E5%87%86%E5%A4%87%E7%94%A8-HashMap-%E5%AD%98%E5%82%A8-1w-%E6%9D%A1%E6%95%B0%E6%8D%AE%EF%BC%8C%E6%9E%84%E9%80%A0%E6%96%B9%E6%B3%95%E4%BC%A0%E5%85%A5-1w-%E8%BF%9B%E5%8E%BB%E4%BC%9A%E8%A7%A6%E5%8F%91%E6%89%A9%E5%AE%B9%E5%90%97%EF%BC%9F%22)
