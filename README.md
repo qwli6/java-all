@@ -4,58 +4,45 @@
 
 一份学习笔记，巩固知识。同时期望能帮我找到一份薪水高、体面的工作。
 
-|     第一部分     |    第二部分    |    第三部分    | 第四部分 |     第五部分     | 第六部分 |    第七部分    | 第八部分 | 第九部分 |     第十部分     |
-| :-------: | :------: | :-------: | :---------: | :-------: | :---------: | :-------: | :-----------: | :-------: | :-------: |
-| Java基础 | Web开发 | Web框架 |Java虚拟机 | 并发编程 | 数据库 | 算法 | 操作系统 | 网络 | 面试 |
-
 
 
 # 二、Contents
 
-
-
 ## Java 基础
 
-- [Java 中的八种基本数据类型，以及它们的封装类]()
-- [switch 能否用 String 做参数]()
-- [equals 与 == 的区别]()
-- [Object 有哪些共用的方法]()
-- [Java 的四种引用，强弱软虚，用到的场景](xxx)
-- [HashCode 的作用](http://www.baidu.com)
-- [ArrayList、LinkedList、Vector 的区别]()
-- [String、StringBuffer 与 StringBuilder 的区别]()
-- [Map、Set、List、Queue、Stack 的特点与用法]()
-- [HashMap 和 ConcurrentHashMap 的区别，HashMap 的底层源码]()
-- [TreeMap、HashMap、LinkedHashMap 的区别]()
-- [Collection 包结构，与 Collections 的区别]()
-- [try catch finally， try 里面有 return， finally 还执行吗]()
-- [Exception 与 Error 包结构。OOM 你遇到过哪些情况， SOF 你遇到过哪些情况]()
-- [Java 面向对象的三个特征与含义]()
-- [Override 和 Overload 的含义与区别]()
-- [interface 与 abstract 的区别]()
-- [static class 和 non static class 的区别]()
-- [Java 多态的实现原理]()
-- ~~[实现多线程的两种方法：Thread 与 Runable]()~~ 见[线程池实现原理](https://dailypaper.cn/article/threadpool)（三种实现线程的方式）
-  - 继承 Thread 类，实现 run 方法，**无**返回值
-  - 实现 Runable 接口 ，实现 run 方法，**无**返回值
-  - 实现 Callable 接口，实现 call 方法，**有**返回值 Future 类型
--  线程同步的方法：sychronized、lock、reentrantLock 等
--  锁的等级：方法锁、对象锁、类锁
--  写出生产者消费者模式
--  [ThreadLocal 的设计理念与作用](01-java基础/ThreadLocal的原理和作用.md)
-- 线程池的工作原理
-  -  [线程池的工作原理，包含初始化参数，拒绝策略等，基于 1.8 的源码分析](https://dailypaper.cn/article/threadpool)
--  Concurrent 包中的其他东西： ArrayBlockingQueue，CountDownLatch 等
--  wait() 和 sleep() 的区别
--  foreach 与正常 for 循环效率对比
--  Java IO 与 NIO
-- 反射的作用与原理
-- [泛型常用特点，List< String > 能否转换成 List< Object >]()
--  解析 XML 的几种方式的原理与特点：DOM、SAX、PULL
--  Java 与 C++ 对比
--  Java1.7 与 1.8 新特性
-- 常用的设计模式：单例、工厂、适配器、责任链、观察者等
-- JNI ( Java Native Interface ) 的使用
+1. [Java 中的八种基本数据类型，以及它们的封装类]()
+2. [switch 能否用 String 做参数]()
+3. [equals 与 == 的区别]()
+4. [Object 有哪些共用的方法]()
+5. [Java 的四种引用，强弱软虚，用到的场景](xxx)
+6. [HashCode 的作用](http://www.baidu.com)
+7. [ArrayList、LinkedList、Vector 的区别]()
+8. [String、StringBuffer 与 StringBuilder 的区别]()
+9. [Map、Set、List、Queue、Stack 的特点与用法]()
+10. [HashMap 和 ConcurrentHashMap 的区别，HashMap 的底层源码]()
+11. [TreeMap、HashMap、LinkedHashMap 的区别]()
+12. [Collection 包结构，与 Collections 的区别]()
+13. [try catch finally， try 里面有 return， finally 还执行吗]()
+14. [Exception 与 Error 包结构。OOM 你遇到过哪些情况， SOF 你遇到过哪些情况]()
+15. [Java 面向对象的三个特征与含义]()
+16. [Override 和 Overload 的含义与区别]()
+17. [interface 与 abstract 的区别]()
+18. [static class 和 non static class 的区别]()
+19. [Java 多态的实现原理]()
+20. 线程同步的方法：sychronized、lock、reentrantLock 等
+21. 锁的等级：方法锁、对象锁、类锁
+22. 写出生产者消费者模式
+23. Concurrent 包中的其他东西： ArrayBlockingQueue，CountDownLatch 等
+24. wait() 和 sleep() 的区别
+25. foreach 与正常 for 循环效率对比
+26. Java IO 与 NIO
+27. 反射的作用与原理
+28. [泛型常用特点，List< String > 能否转换成 List< Object >]()
+29. 解析 XML 的几种方式的原理与特点：DOM、SAX、PULL
+30. Java 与 C++ 对比
+31. Java1.7 与 1.8 新特性
+32. 常用的设计模式：单例、工厂、适配器、责任链、观察者等
+33. JNI ( Java Native Interface ) 的使用
 
 
 
@@ -80,7 +67,47 @@
 ## Java 多线程
 
 1. [线程池的工作原理](https://dailypaper.cn/article/threadpool)
+
 2. 程池的阻塞队列
+
+3. [ThreadLocal 的设计理念与作用](01-java基础/ThreadLocal的原理和作用.md)
+
+4. ~~[创建线程的两种方法：Thread 与 Runable]()~~ 见[线程池实现原理](https://dailypaper.cn/article/threadpool)（三种实现线程的方式）
+
+   1. 继承 Thread 类，实现 run 方法，**无**返回值
+
+      ```java
+      public class ThreadDemo1 extends Thread {
+          @Override
+          public void run() {
+              super.run();
+              System.out.println("当前线程名称:" + this.getName());
+          }
+      }
+      ```
+
+   2. 实现 Runable 接口 ，实现 run 方法，**无**返回值
+
+      ```java
+      public class ThreadDemo2 implements Runnable {
+          @Override
+          public void run() {
+              System.out.println("第二种方式实现线程:" + Thread.currentThread().getName());
+          }
+      }
+      ```
+
+   3. 实现 Callable 接口，实现 call 方法，**有**返回值 Future 类型
+
+      ```java
+      public class ThreadDemo3 implements Callable<String> {
+          @Override
+          public String call() throws Exception {
+              System.out.println("第三种线程名称：" + Thread.currentThread().getName());
+              return "success";
+          }
+      }
+      ```
 
 
 
@@ -90,9 +117,9 @@
 2. 堆里面的分区：Eden、survival from to、老年代各自的特点
 3. 对象的创建方法、对象的内存分配、对象的访问定位
 4. GC 的两种判定方法：引用计数与引用链
-5. GC 的三种手机方法：标记清除、标记整理、复制算法的原理与特点，分别用在什么地方，如果让你优化收集方法，有什么思路
-6. GC 收集器有哪些？ CMS 收集器与 G1 收集器的特点
-7. Minor GC 与 Full GC 分别在什么时候发生
+5. GC 的三种手机方法：标记清除、标记整理、复制算法的原理与特点？分别用在什么地方？如果让你优化收集方法，有什么思路？
+6. GC 收集器有哪些？ CMS 收集器与 G1 收集器的特点。
+7. Minor GC 与 Full GC 分别在什么时候发生？
 8. [几种常用的内存调试工具：jmap、jstack、jconsole](https://dailypaper.cn/article/337)
 9. 类加载的五个过程：加载、验证、准备、解析、初始化
 10. 双亲委派模型：Bootstrap ClassLoader、Extension ClassLoader、ApplicationClassLoader
@@ -134,75 +161,86 @@
 
 ## 算法&数据结构
 
-- [链表与数组](https://dailypaper.cn/article/333)
-- 队列和栈，出栈与入栈
-- 链表的删除、插入、反向
-- 字符串操作
-- Hash 表的 hash 函数，冲突解决方法有哪些
-- 各种排序：冒泡、选择、插入、希尔、归并、快排、堆排、桶排、基数的原理。平均时间复杂度、最坏时间复杂度、空间复杂度以及是否稳定
-  - [冒泡排序](https://dailypaper.cn/article/bubble-sort)
-  - [选择排序](https://dailypaper.cn/article/select-sort)
-- 快排的 partition 函数与归并的 Merge 函数
-- 对冒泡与快排的改进
-- 二分查找，与变种二分查找
-  - [二分查找-本地文档，比较简单，没有放在博客上](07-算法/二分查找.md)
-  - 变种二分查找
-- 二叉树，B+ 树， AVL 树，红黑树、哈弗曼树
-- **二叉树遍历**
-  - 前序遍历
-  - 中序遍历
-  - 后序遍历
-- 二叉树的递归与非递归写法，层序遍历算法
-- 图的 BFS（广度优先） 与 DFS（深度优先） 算法，最小生成树 prim 算法与最短路径 Dijkstra（单源点最短路径） 算法
-- KMP 算法
-- 排列组合问题
-- 动态规划、贪心算法、分治算法
-- 大数据处理：类似 10 亿条数据找出最大的 1000 个数
+1. [链表与数组](https://dailypaper.cn/article/333)
+2. 对列和栈，出栈与入栈
+3. 链表的删除、插入、反向
+4. 字符串操作
+5. Hash 表的 hash 函数，冲突解决方法有哪些
+6. 各种排序：冒泡、选择、插入、希尔、归并、快排、堆排、桶排、基数的原理。平均时间复杂度、最坏时间复杂度、空间复杂度以及是否稳定
+   1. [冒泡排序](https://dailypaper.cn/article/bubble-sort)
+   2. [选择排序](https://dailypaper.cn/article/select-sort)
+
+7. 快排的 partition 函数与归并的 Merge 函数
+8. 对冒泡与快排的改进
+9. 二分查找，与变种二分查找
+   1. [二分查找-本地文档，比较简单，没有放在博客上](07-算法/二分查找.md)
+   2. 变种二分查找
+10. 二叉树，B+ 树， AVL 树，红黑树、哈弗曼树
+11. **二叉树遍历**
+    1. 前序遍历
+    2. 中序遍历
+    3. 后序遍历
+12. 二叉树的递归与非递归写法，层序遍历算法
+13. 图的 BFS（广度优先） 与 DFS（深度优先） 算法，最小生成树 prim 算法与最短路径 Dijkstra（单源点最短路径） 算法
+14. KMP 算法
+15. 排列组合问题
+16. 动态规划、贪心算法、分治算法
+17. 大数据处理：类似 10 亿条数据找出最大的 1000 个数
 
 
 
 ## 数据库
 
-- Redis
-  - [Redis 事务](https://dailypaper.cn/article/redis-transaction)
-  - [Redis 持久化策略](https://dailypaper.cn/article/redis-snapshot-aof)
-  - [Redis 基本数据类型](06-数据库/redis/redis 的基本概念.md)
-  - [Redis 主从同步，哨兵，集群模式](06-数据库/redis/redis 主从复制（Sentinel 哨兵模式）和集群模式（Redis-Cluster）.md)
-- Mongodb
-- Mysql
+1. Redis
+   1. [Redis 事务](https://dailypaper.cn/article/redis-transaction)
+   2. [Redis 持久化策略](https://dailypaper.cn/article/redis-snapshot-aof)
+   3. [Redis 基本数据类型](06-数据库/redis/redis 的基本概念.md)
+   4. [Redis 主从同步，哨兵，集群模式](06-数据库/redis/redis 主从复制（Sentinel 哨兵模式）和集群模式（Redis-Cluster）.md)
+
+2. Mongodb
+
+3. Mysql
 
 
 
 ## Web 框架
 
-- Spring &SpringBoot&SpringMVC
-  - FactoryBean 和 BeanFactory 的区别
-  - SpringMVC 执行流程
-  - Spring 中使用了哪些设计模式
-    - 工厂模式 BeanFactory
-      - 简单工厂模式（静态工厂方法） BeanFactory
-    - 代理模式，基于 Jdk 的动态代理和 cglib 代理（AOP）
-    - 观察者模式（事件和监听 ApplicationListener）
-    - 单例模式
-    - 模板方法模式（xxxTemplate）
-    - 适配器模式（Adapter）
-- SpringCloud
-- Dubbo
-- Mybatis
-- Zookeeper
-- Nginx
-- Nacos
+1. Spring &SpringBoot&SpringMVC
+   1. FactoryBean 和 BeanFactory 的区别
+   2. SpringMVC 执行流程
+   3. Spring 中使用了哪些设计模式
+      1. 工厂模式 BeanFactory
+      2. 简单工厂模式（静态工厂方法） BeanFactory
+      3. 代理模式，基于 Jdk 的动态代理和 cglib 代理（AOP）
+      4. 观察者模式（事件和监听 ApplicationListener）
+      5. 单例模式
+      6. 模板方法模式（xxxTemplate）
+      7. 适配器模式（Adapter）
+
+2. SpringCloud
+
+3. Dubbo
+
+4. Mybatis
+
+5. Zookeeper
+
+6. Nginx
+
+7. Nacos
 
 
 
 ## 面试题
 
-**线程**
+**1. 线程**
 
-- 如何使两个线程交叉打印？例如打印 hello。线程 1 打印 h，线程 2 打印 e，线程 1 打印 l，线程 2 打印 l，线程 1 打印 e。
-  - 解决方案参考：Object 对象的 wait 和 notify 方法
+1. 如何使两个线程交叉打印？例如打印 hello。线程 1 打印 h，线程 2 打印 e，线程 1 打印 l，线程 2 打印 l，线程 1 打印 e。
+   1. 解决方案参考：Object 对象的 wait 和 notify 方法
 
-**2.集合**
 
-- 准备使用 HashMap 存储 1w 条数据，构造方法传入 1w 会触发扩容吗？传入 1k 呢?
-  - 解决方案参考：HashMap 源码分析
+
+**2. 集合**
+
+1. 准备使用 HashMap 存储 1w 条数据，构造方法传入 1w 会触发扩容吗？传入 1k 呢?
+   1. 解决方案参考：HashMap 源码分析
