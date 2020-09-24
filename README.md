@@ -1,4 +1,4 @@
-## Notices
+# 一、Notices
 
 > **源码部分的解析基于 ` jdk8`**
 
@@ -7,6 +7,10 @@
 |     第一部分     |    第二部分    |    第三部分    | 第四部分 |     第五部分     | 第六部分 |    第七部分    | 第八部分 | 第九部分 |     第十部分     |
 | :-------: | :------: | :-------: | :---------: | :-------: | :---------: | :-------: | :-----------: | :-------: | :-------: |
 | Java基础 | Web开发 | Web框架 |Java虚拟机 | 并发编程 | 数据库 | 算法 | 操作系统 | 网络 | 面试 |
+
+
+
+# 二、Contents
 
 
 
@@ -59,92 +63,76 @@
 
 > 基于 jdk 1.8 分析
 
-- Map 接口典型实现类源码分析
-  - [hashMap 源码分析之初始化，扩容时机](https://dailypaper.cn/article/hashmap-initial)
-  - [HashMap 原理之存储结构](https://dailypaper.cn/article/hashmap-storage-structure)
-- List 接口典型实现类源码解析
-  - ArrayList 源码解析
-  - LinkedList 源码解析
-- Set 接口典型实现类源码解析
-  - HashSet 源码解析
-  - Hashtable 源码解析
+1. Map 接口典型实现类源码分析
+   1. [HashMap 源码分析之初始化、扩容时机](https://dailypaper.cn/article/hashmap-initial)
+   2. [HashMap 原理之存储结构](https://dailypaper.cn/article/hashmap-storage-structure)
+
+2. List 接口典型实现类源码解析
+   1. ArrayList 源码解析
+   2. LinkedList 源码解析
+
+3. Set 接口典型实现类源码解析
+   1. HashSet 源码解析
+   2. Hashtable 源码解析
 
 
 
 ## Java 多线程
 
-- [线程池的工作原理](https://dailypaper.cn/article/threadpool)
-- 线程池的阻塞队列
+1. [线程池的工作原理](https://dailypaper.cn/article/threadpool)
+2. 程池的阻塞队列
 
 
 
 ## Java 虚拟机
 
-- 内存模式以及分区，需要详细到每个区放什么
-- 堆里面的分区：Eden、survival from to、老年代各自的特点
-- 对象的创建方法、对象的内存分配、对象的访问定位
-- GC 的两种判定方法：引用计数与引用链
-- GC 的三种手机方法：标记清除、标记整理、复制算法的原理与特点，分别用在什么地方，如果让你优化收集方法，有什么思路
-- GC 收集器有哪些？ CMS 收集器与 G1 收集器的特点
-- Minor GC 与 Full GC 分别在什么时候发生
-- [几种常用的内存调试工具：jmap、jstack、jconsole](https://dailypaper.cn/article/337)
-- 类加载的五个过程：加载，验证，准备，解析，初始化
-- 双亲委派模型：Bootstrap ClassLoader、Extension ClassLoader、ApplicationClassLoader
-- 分配：静态分派与动态分派
+1. 内存模式以及分区，需要详细到每个区放什么
+2. 堆里面的分区：Eden、survival from to、老年代各自的特点
+3. 对象的创建方法、对象的内存分配、对象的访问定位
+4. GC 的两种判定方法：引用计数与引用链
+5. GC 的三种手机方法：标记清除、标记整理、复制算法的原理与特点，分别用在什么地方，如果让你优化收集方法，有什么思路
+6. GC 收集器有哪些？ CMS 收集器与 G1 收集器的特点
+7. Minor GC 与 Full GC 分别在什么时候发生
+8. [几种常用的内存调试工具：jmap、jstack、jconsole](https://dailypaper.cn/article/337)
+9. 类加载的五个过程：加载、验证、准备、解析、初始化
+10. 双亲委派模型：Bootstrap ClassLoader、Extension ClassLoader、ApplicationClassLoader
+11. 分配：静态分派与动态分派
 
 
 
 ## 操作系统
 
-- [进程和线程的区别](https://dailypaper.cn/article/process-and-thread)
-- 死锁的必要条件，怎么处理死锁
-- Window 内存管理方式：段存储、页存储、段页存储
-- 进程的几种状态
-- IPC 几种通信方式
-- 什么是虚拟内存
-- 虚拟地址、逻辑地址、线性地址、物理地址的区别
+1. [进程和线程的区别](https://dailypaper.cn/article/process-and-thread)
+2. 死锁的必要条件，怎么处理死锁
+3. Window 内存管理方式：段存储、页存储、段页存储
+4. 进程的几种状态
+5. IPC 几种通信方式
+6. 什么是虚拟内存
+7. 虚拟地址、逻辑地址、线性地址、物理地址的区别
 
 
 
 ## 计算机网络
 
-- OSI 与 TCP/IP 各层的结构与功能，都有那些协议
+1. OSI 与 TCP/IP 各层的结构与功能，都有那些协议
+2. TCP 与 UDP 的区别
+3. TCP 报文结构
+4. TCP 的三次握手与四次挥手过程，各个状态名称与含义， TIMEWAIT 的作用
+5. TCP 拥塞控制
+6. TCP 滑动窗口与回退 N 帧协议
+7. Http 的报文结构
+8. Http 的状态码含义
+9. Http Request 的几种类型
+10. Http1.1 和 Http1.0 的区别
+11. Http 怎么处理长连接
+12. Cookie 与 Session 的作用与原理
+13. 电脑上访问一个网页，整个过程是怎样的：DNS、HTTP、TCP、OSPF、IP、ARP
+14. Ping 的整个过程，ICMP 报文是什么
+15. C/S 模式下使用 socket 通信，几个关键函数
+16. IP 地址分类
+17. 路由器与交换机区别
 
-- TCP 与 UDP 的区别
-
-- TCP 报文结构
-
-- TCP 的三次握手与四次挥手过程，各个状态名称与含义， TIMEWAIT 的作用。
-
-- TCP 拥塞控制
-
-- TCP 滑动窗口与回退 N 帧协议
-
-- Http 的报文结构
-
-- Http 的状态码含义
-
-- Http Request 的几种类型
-
-- Http1.1 和 Http1.0 的区别
-
-- Http 怎么处理长连接
-
-- Cookie 与 Session 的作用与原理
-
-- 电脑上访问一个网页，整个过程是怎样的：DNS、HTTP、TCP、OSPF、IP、ARP
-
-- Ping 的整个过程，ICMP 报文是什么
-
-- C/S 模式下使用 socket 通信，几个关键函数
-
-- IP 地址分类
-
-- 路由器与交换机区别
-
-  
-
-## 算法
+## 算法&数据结构
 
 - [链表与数组](https://dailypaper.cn/article/333)
 - 队列和栈，出栈与入栈
@@ -178,8 +166,8 @@
 - Redis
   - [Redis 事务](https://dailypaper.cn/article/redis-transaction)
   - [Redis 持久化策略](https://dailypaper.cn/article/redis-snapshot-aof)
-  - [Redis 基本数据类型](./06-数据库/redis/redis 的基本概念.md)
-  - [Redis 主从同步，哨兵，集群模式](./06-数据库/redis/redis 主从复制（Sentinel 哨兵模式）和集群模式（Redis-Cluster）.md)
+  - [Redis 基本数据类型](06-数据库/redis/redis 的基本概念.md)
+  - [Redis 主从同步，哨兵，集群模式](06-数据库/redis/redis 主从复制（Sentinel 哨兵模式）和集群模式（Redis-Cluster）.md)
 - Mongodb
 - Mysql
 
