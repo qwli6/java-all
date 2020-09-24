@@ -1,18 +1,6 @@
-## 1. 写在前面
+## Notices
 
-> 源码部分的解析均是基于 ` jdk8`
-
-所有笔记的 md 文件都存储在 github 上，但是由于没用图床的原因，github 上直接访问笔记可能图片会无法访问，所以我将每个笔记的连接地址都改成了我自己的博客地址，如果 github 上无法访问，可以直接去[我的博客](https://dailypaper.cn)访问。
-
-关于算法部分，我在学习了之后，会尝试使用 java 代码将对应的算法实现一遍，如果有错误，欢迎指正。源码也在 github 上，如果有想参考的同学可以[点这里](https://github.com/selfassu/leetcode/tree/master/src/main/java/me/lqw/algorithm)。
-
-笔者在写这些东西的时候，已经工作了 4 年了。前两年在深圳做的 Android 开发，后两年在武汉良品铺子做的 Java 开发，整理这些东西一来是有很多东西只是知其然不知其所以然，不想继续浑浑噩噩下去。二来只是想找一份薪水稍高，体面点的的工作（在武汉我这样的打工仔压力太大了）。
-
-整理的东西有点多，难免会出现误差错误，还希望发现错误的师兄师姐不吝赐教，万分感谢。
-
-
-
-## 2. 这是啥
+> **源码部分的解析基于 ` jdk8`**
 
 一份学习笔记，巩固知识。同时期望能帮我找到一份薪水高、体面的工作。
 
@@ -20,9 +8,9 @@
 | :-------: | :------: | :-------: | :---------: | :-------: | :---------: | :-------: | :-----------: | :-------: | :-------: |
 | Java基础 | Web开发 | Web框架 |Java虚拟机 | 并发编程 | 数据库 | 算法 | 操作系统 | 网络 | 面试 |
 
-## 3. 目录
 
-### 1. Java 基础部分
+
+## Java 基础
 
 - [Java 中的八种基本数据类型，以及它们的封装类]()
 - [switch 能否用 String 做参数]()
@@ -65,32 +53,32 @@
 - 常用的设计模式：单例、工厂、适配器、责任链、观察者等
 - JNI ( Java Native Interface ) 的使用
 
-------
 
 
+## Java 集合源码分析
 
-### Java 部分内容源码分析（基于 jdk8）
+> 基于 jdk 1.8 分析
 
 - Map 接口典型实现类源码分析
   - [hashMap 源码分析之初始化，扩容时机](https://dailypaper.cn/article/hashmap-initial)
   - [HashMap 原理之存储结构](https://dailypaper.cn/article/hashmap-storage-structure)
-  - HashMap 面试题
-    - [准备使用 HashMap 存储 1w 条数据，构造方法传入 1w 会触发扩容吗？传入 1k 呢?](01-java 基础/准备用HashMap存储 1w 条数据，构造方法传入 1w 进去会触发扩容吗.md)
 - List 接口典型实现类源码解析
+  - ArrayList 源码解析
+  - LinkedList 源码解析
 - Set 接口典型实现类源码解析
+  - HashSet 源码解析
+  - Hashtable 源码解析
 
-### Java 多线程
+
+
+## Java 多线程
 
 - [线程池的工作原理](https://dailypaper.cn/article/threadpool)
-  - 线程面试题
-    - 如何使两个线程交叉执行打印 hello，线程 1 打印 h，线程 2 打印 e，线程 1 打印 l，线程 2 l，线程 1 打印 e
-      - 利用对象的 wait 和 notify 方法
+- 线程池的阻塞队列
 
 
 
-
-
-### Java 虚拟机
+## Java 虚拟机
 
 - 内存模式以及分区，需要详细到每个区放什么
 - 堆里面的分区：Eden、survival from to、老年代各自的特点
@@ -104,7 +92,9 @@
 - 双亲委派模型：Bootstrap ClassLoader、Extension ClassLoader、ApplicationClassLoader
 - 分配：静态分派与动态分派
 
-### 操作系统相关
+
+
+## 操作系统
 
 - [进程和线程的区别](https://dailypaper.cn/article/process-and-thread)
 - 死锁的必要条件，怎么处理死锁
@@ -114,38 +104,54 @@
 - 什么是虚拟内存
 - 虚拟地址、逻辑地址、线性地址、物理地址的区别
 
-------
 
-### 计算机网络相关
+
+## 计算机网络
 
 - OSI 与 TCP/IP 各层的结构与功能，都有那些协议
+
 - TCP 与 UDP 的区别
+
 - TCP 报文结构
+
 - TCP 的三次握手与四次挥手过程，各个状态名称与含义， TIMEWAIT 的作用。
+
 - TCP 拥塞控制
+
 - TCP 滑动窗口与回退 N 帧协议
+
 - Http 的报文结构
+
 - Http 的状态码含义
+
 - Http Request 的几种类型
+
 - Http1.1 和 Http1.0 的区别
+
 - Http 怎么处理长连接
+
 - Cookie 与 Session 的作用与原理
+
 - 电脑上访问一个网页，整个过程是怎样的：DNS、HTTP、TCP、OSPF、IP、ARP
+
 - Ping 的整个过程，ICMP 报文是什么
+
 - C/S 模式下使用 socket 通信，几个关键函数
+
 - IP 地址分类
+
 - 路由器与交换机区别
 
-------
+  
 
-### 算法相关内容
+## 算法
 
 - [链表与数组](https://dailypaper.cn/article/333)
 - 队列和栈，出栈与入栈
 - 链表的删除、插入、反向
 - 字符串操作
 - Hash 表的 hash 函数，冲突解决方法有哪些
-- 各种排序：冒泡，选择，插入，希尔，归并，快排，堆排，桶排，基数的原理，平均时间复杂度，最坏时间复杂度、空间复杂度，是否稳定
+- 各种排序：冒泡、选择、插入、希尔、归并、快排、堆排、桶排、基数的原理。平均时间复杂度、最坏时间复杂度、空间复杂度以及是否稳定
   - [冒泡排序](https://dailypaper.cn/article/bubble-sort)
   - [选择排序](https://dailypaper.cn/article/select-sort)
 - 快排的 partition 函数与归并的 Merge 函数
@@ -154,32 +160,61 @@
   - [二分查找-本地文档，比较简单，没有放在博客上](07-算法/二分查找.md)
   - 变种二分查找
 - 二叉树，B+ 树， AVL 树，红黑树、哈弗曼树
-- 二叉树的前中后序遍历：递归与非递归写法，层序遍历算法
-- 图的 BFS 与 DFS 算法，最小生成树 prim 算法与最短路径 Dijkstra 算法
+- **二叉树遍历**
+  - 前序遍历
+  - 中序遍历
+  - 后序遍历
+- 二叉树的递归与非递归写法，层序遍历算法
+- 图的 BFS（广度优先） 与 DFS（深度优先） 算法，最小生成树 prim 算法与最短路径 Dijkstra（单源点最短路径） 算法
 - KMP 算法
 - 排列组合问题
 - 动态规划、贪心算法、分治算法
 - 大数据处理：类似 10 亿条数据找出最大的 1000 个数
 
-------
 
-### 数据库相关内容
+
+## 数据库
 
 - Redis
   - [Redis 事务](https://dailypaper.cn/article/redis-transaction)
   - [Redis 持久化策略](https://dailypaper.cn/article/redis-snapshot-aof)
   - [Redis 基本数据类型](./06-数据库/redis/redis 的基本概念.md)
   - [Redis 主从同步，哨兵，集群模式](./06-数据库/redis/redis 主从复制（Sentinel 哨兵模式）和集群模式（Redis-Cluster）.md)
+- Mongodb
+- Mysql
 
-### 框架相关
 
-- Spring&SpringBoot&SpringMVC
+
+## Web 框架
+
+- Spring &SpringBoot&SpringMVC
   - FactoryBean 和 BeanFactory 的区别
   - SpringMVC 执行流程
   - Spring 中使用了哪些设计模式
     - 工厂模式 BeanFactory
-    - 代理模式，基于 Jdk 的动态代理和 cglib 代理
-    - 观察者模式（事件和监听）
+      - 简单工厂模式（静态工厂方法） BeanFactory
+    - 代理模式，基于 Jdk 的动态代理和 cglib 代理（AOP）
+    - 观察者模式（事件和监听 ApplicationListener）
+    - 单例模式
+    - 模板方法模式（xxxTemplate）
+    - 适配器模式（Adapter）
+- SpringCloud
 - Dubbo
 - Mybatis
+- Zookeeper
+- Nginx
+- Nacos
 
+
+
+## 面试题
+
+**线程**
+
+- 如何使两个线程交叉打印？例如打印 hello。线程 1 打印 h，线程 2 打印 e，线程 1 打印 l，线程 2 打印 l，线程 1 打印 e。
+  - 解决方案参考：Object 对象的 wait 和 notify 方法
+
+**2.集合**
+
+- 准备使用 HashMap 存储 1w 条数据，构造方法传入 1w 会触发扩容吗？传入 1k 呢?
+  - 解决方案参考：HashMap 源码分析
