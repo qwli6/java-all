@@ -72,7 +72,7 @@
 
 1. [线程池的工作原理](https://dailypaper.cn/article/threadpool)
 
-2. 程池的阻塞队列
+2. 线程池的阻塞队列
 
 3. [ThreadLocal 的设计理念与作用](01-java基础/ThreadLocal的原理和作用.md)
 
@@ -121,7 +121,7 @@
 2. 堆里面的分区：Eden、survival from to、老年代各自的特点
 3. 对象的创建方法、对象的内存分配、对象的访问定位
 4. GC 的两种判定方法：引用计数与引用链
-5. GC 的三种手机方法：标记清除、标记整理、复制算法的原理与特点？分别用在什么地方？如果让你优化收集方法，有什么思路？
+5. [GC 的三种收集方法：标记清除、标记整理、复制算法的原理与特点？分别用在什么地方？如果让你优化收集方法，有什么思路？](https://github.com/selfassu/java-all/wiki/GC-%E7%9A%84%E4%B8%89%E7%A7%8D%E6%94%B6%E9%9B%86%E6%96%B9%E6%B3%95%EF%BC%9A%E6%A0%87%E8%AE%B0%E6%B8%85%E9%99%A4%E3%80%81%E6%A0%87%E8%AE%B0%E6%95%B4%E7%90%86%E3%80%81%E5%A4%8D%E5%88%B6%E7%AE%97%E6%B3%95%E7%9A%84%E5%8E%9F%E7%90%86%E4%B8%8E%E7%89%B9%E7%82%B9%EF%BC%9F)
 6. GC 收集器有哪些？ CMS 收集器与 G1 收集器的特点。
 7. Minor GC 与 Full GC 分别在什么时候发生？
 8. [几种常用的内存调试工具：jmap、jstack、jconsole](https://dailypaper.cn/article/337)
