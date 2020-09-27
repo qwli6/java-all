@@ -17,7 +17,7 @@
 1. [Java 中的八种基本数据类型，以及它们的封装类]()
 2. [switch 能否用 String 做参数]()
 3. [equals 与 == 的区别]()
-4. [Object 有哪些共用的方法]()
+4. [Object 有哪些共用的方法](https://github.com/selfassu/java-all/wiki/Object%E7%B1%BB%E4%B8%8B%E9%9D%A2%E7%9A%84%E5%87%A0%E7%A7%8D%E6%96%B9%E6%B3%95)
 5. [Java 的四种引用，强弱软虚，用到的场景](xxx)
 6. [HashCode 的作用](http://www.baidu.com)
 7. [ArrayList、LinkedList、Vector 的区别]()
