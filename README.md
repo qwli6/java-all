@@ -28,7 +28,7 @@
 12. [Collection 包结构，与 Collections 的区别]()
 13. [try catch finally， try 里面有 return， finally 还执行吗]()
 14. [Exception 与 Error 包结构。OOM 你遇到过哪些情况， SOF 你遇到过哪些情况]()
-15. [Java 面向对象的三个特征与含义]()
+15. [面向对象的特征和含义](https://github.com/selfassu/java-all/wiki/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%9A%84%E7%89%B9%E5%BE%81)
 16. [Override 和 Overload 的含义与区别]()
 17. [interface 与 abstract 的区别]()
 18. [static class 和 non static class 的区别]()
@@ -123,7 +123,7 @@
 4. 对象的创建方法、对象的内存分配、对象的访问定位
 5. GC 的两种判定方法：引用计数与引用链
 6. [GC 的三种收集方法：标记清除、标记整理、复制算法的原理与特点？分别用在什么地方？如果让你优化收集方法，有什么思路？](https://github.com/selfassu/java-all/wiki/GC-%E7%9A%84%E4%B8%89%E7%A7%8D%E6%94%B6%E9%9B%86%E6%96%B9%E6%B3%95%EF%BC%9A%E6%A0%87%E8%AE%B0%E6%B8%85%E9%99%A4%E3%80%81%E6%A0%87%E8%AE%B0%E6%95%B4%E7%90%86%E3%80%81%E5%A4%8D%E5%88%B6%E7%AE%97%E6%B3%95%E7%9A%84%E5%8E%9F%E7%90%86%E4%B8%8E%E7%89%B9%E7%82%B9%EF%BC%9F)
-7. GC 收集器有哪些？ CMS 收集器与 G1 收集器的特点。
+7. [GC 收集器有哪些？ CMS 收集器与 G1 收集器的特点](https://github.com/selfassu/java-all/wiki/GC-%E6%94%B6%E9%9B%86%E5%99%A8%E6%9C%89%E5%93%AA%E4%BA%9B%EF%BC%9F-CMS-%E6%94%B6%E9%9B%86%E5%99%A8%E4%B8%8E-G1-%E6%94%B6%E9%9B%86%E5%99%A8%E7%9A%84%E7%89%B9%E7%82%B9)
 8. Minor GC 与 Full GC 分别在什么时候发生？
 9. [几种常用的内存调试工具：jmap、jstack、jconsole](https://dailypaper.cn/article/337)
 10. 类加载的五个过程：加载、验证、准备、解析、初始化
