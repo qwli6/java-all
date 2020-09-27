@@ -117,17 +117,18 @@
 
 ## Java 虚拟机
 
-1. 内存模式以及分区，需要详细到每个区放什么
-2. 堆里面的分区：Eden、survival from to、老年代各自的特点
-3. 对象的创建方法、对象的内存分配、对象的访问定位
-4. GC 的两种判定方法：引用计数与引用链
-5. [GC 的三种收集方法：标记清除、标记整理、复制算法的原理与特点？分别用在什么地方？如果让你优化收集方法，有什么思路？](https://github.com/selfassu/java-all/wiki/GC-%E7%9A%84%E4%B8%89%E7%A7%8D%E6%94%B6%E9%9B%86%E6%96%B9%E6%B3%95%EF%BC%9A%E6%A0%87%E8%AE%B0%E6%B8%85%E9%99%A4%E3%80%81%E6%A0%87%E8%AE%B0%E6%95%B4%E7%90%86%E3%80%81%E5%A4%8D%E5%88%B6%E7%AE%97%E6%B3%95%E7%9A%84%E5%8E%9F%E7%90%86%E4%B8%8E%E7%89%B9%E7%82%B9%EF%BC%9F)
-6. GC 收集器有哪些？ CMS 收集器与 G1 收集器的特点。
-7. Minor GC 与 Full GC 分别在什么时候发生？
-8. [几种常用的内存调试工具：jmap、jstack、jconsole](https://dailypaper.cn/article/337)
-9. 类加载的五个过程：加载、验证、准备、解析、初始化
-10. 双亲委派模型：Bootstrap ClassLoader、Extension ClassLoader、ApplicationClassLoader
-11. 分配：静态分派与动态分派
+1. [JVM 内存管理](https://github.com/selfassu/java-all/wiki/JVM-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86)
+2. 内存模式以及分区，需要详细到每个区放什么
+3. 堆里面的分区：Eden、survival from to、老年代各自的特点
+4. 对象的创建方法、对象的内存分配、对象的访问定位
+5. GC 的两种判定方法：引用计数与引用链
+6. [GC 的三种收集方法：标记清除、标记整理、复制算法的原理与特点？分别用在什么地方？如果让你优化收集方法，有什么思路？](https://github.com/selfassu/java-all/wiki/GC-%E7%9A%84%E4%B8%89%E7%A7%8D%E6%94%B6%E9%9B%86%E6%96%B9%E6%B3%95%EF%BC%9A%E6%A0%87%E8%AE%B0%E6%B8%85%E9%99%A4%E3%80%81%E6%A0%87%E8%AE%B0%E6%95%B4%E7%90%86%E3%80%81%E5%A4%8D%E5%88%B6%E7%AE%97%E6%B3%95%E7%9A%84%E5%8E%9F%E7%90%86%E4%B8%8E%E7%89%B9%E7%82%B9%EF%BC%9F)
+7. GC 收集器有哪些？ CMS 收集器与 G1 收集器的特点。
+8. Minor GC 与 Full GC 分别在什么时候发生？
+9. [几种常用的内存调试工具：jmap、jstack、jconsole](https://dailypaper.cn/article/337)
+10. 类加载的五个过程：加载、验证、准备、解析、初始化
+11. 双亲委派模型：Bootstrap ClassLoader、Extension ClassLoader、ApplicationClassLoader
+12. 分配：静态分派与动态分派
 
 
 
