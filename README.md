@@ -211,9 +211,32 @@
 ## Web 框架
 
 1. Spring &SpringBoot&SpringMVC
-   1. FactoryBean 和 BeanFactory 的区别
-   2. SpringMVC 执行流程
-   3. Spring 中使用了哪些设计模式
+
+   1. Spring 基本使用（`Spring5.2.5`）
+
+      ```java
+      //将 applicationContext.xml 配置文件转换成 Resource
+      Resource resource = new ClassPathResource("applicationContext.xml");
+      //初始化默认的 BeanFactory
+      //XMLBeanFactory 继承至 DefaultListableBeanFactory，已被废弃
+      DefaultListableBeanFactory defaultListableBeanFactory = new DefaultListableBeanFactory();
+      //Bean 定义读取器
+      BeanDefinitionReader BeanDefinitionReader = new XMLBeanDefinitionReader(defaultListableBeanFactory);
+      //加载 Bean 定义
+      BeanDefinitionReader.loadBeanDefinitions(resource);
+      
+      //从容器中获取 Bean 对象
+      Student student = (Student) defaultListableBeanFactory.getBean("student");
+      ```
+
+   2. Spring Bean 对象加载过程
+
+   3. FactoryBean 和 BeanFactory 的区别
+
+   4. SpringMVC 执行流程
+
+   5. Spring 中使用了哪些设计模式
+
       1. 工厂模式 BeanFactory
       2. 简单工厂模式（静态工厂方法） BeanFactory
       3. 代理模式，基于 Jdk 的动态代理和 cglib 代理（AOP）
