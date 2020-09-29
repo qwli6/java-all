@@ -212,21 +212,72 @@
 
 1. Spring &SpringBoot&SpringMVC
 
-   1. Spring 基本使用（`Spring5.2.5`）
+   1. Spring 基本使用
+
+      build.gradle
+
+      ```groovy
+      
+      dependencies {
+          compile (
+                  "org.springframework:spring-core:5.2.5.RELEASE",
+                  "org.springframework:spring-aop:5.2.5.RELEASE",
+                  "org.springframework:spring-context:5.2.5.RELEASE",
+                  "org.springframework:spring-context-support:5.2.5.RELEASE",
+                  "org.springframework:spring-beans:5.2.5.RELEASE",
+                  "org.springframework:spring-orm:5.2.5.RELEASE",
+                  "org.springframework:spring-aspects:5.2.5.RELEASE",
+                  "org.springframework:spring-webmvc:5.2.5.RELEASE",
+                  "org.springframework:spring-jdbc:5.2.5.RELEASE",
+                  "org.springframework:spring-tx:5.2.5.RELEASE",
+                  "org.springframework:spring-instrument:5.2.5.RELEASE",
+          )
+      }
+      ```
+
+      `applicationContext.xml`
+
+      ```xml
+      <?xml version="1.0" encoding="UTF-8"?>
+      <beans xmlns="http://www.springframework.org/schema/beans"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xmlns:context="http://www.springframework.org/schema/context"
+             xmlns:aop="http://www.springframework.org/schema/aop"
+             xmlns:tx="http://www.springframework.org/schema/tx"
+             xsi:schemaLocation="http://www.springframework.org/schema/beans
+      http://www.springframework.org/schema/beans/spring-beans-4.2.xsd
+      http://www.springframework.org/schema/context
+      http://www.springframework.org/schema/context/spring-context-4.2.xsd
+      http://www.springframework.org/schema/aop
+      http://www.springframework.org/schema/aop/spring-aop-4.2.xsd
+      http://www.springframework.org/schema/tx
+      http://www.springframework.org/schema/tx/spring-tx-4.2.xsd">
+      
+        	<!-- 属性注入 -->
+          <bean id="student" class="com.liqiwen.spring.bean.Student">
+              <property name="name" value="zhangsan"/>
+              <property name="age" value="20"/>
+          </bean>
+      </beans>
+      ```
+
+      测试方法
 
       ```java
-      //将 applicationContext.xml 配置文件转换成 Resource
-      Resource resource = new ClassPathResource("applicationContext.xml");
-      //初始化默认的 BeanFactory
-      //XMLBeanFactory 继承至 DefaultListableBeanFactory，已被废弃
-      DefaultListableBeanFactory defaultListableBeanFactory = new DefaultListableBeanFactory();
-      //Bean 定义读取器
-      BeanDefinitionReader BeanDefinitionReader = new XMLBeanDefinitionReader(defaultListableBeanFactory);
-      //加载 Bean 定义
-      BeanDefinitionReader.loadBeanDefinitions(resource);
+      public static void main(String[] args){
+        //将 applicationContext.xml 配置文件转换成 Resource
+        Resource resource = new ClassPathResource("applicationContext.xml");
+        //初始化默认的 BeanFactory
+        //XMLBeanFactory 继承至 DefaultListableBeanFactory，已被废弃
+        DefaultListableBeanFactory defaultListableBeanFactory = new DefaultListableBeanFactory();
+        //Bean 定义读取器
+        BeanDefinitionReader BeanDefinitionReader = new XMLBeanDefinitionReader(defaultListableBeanFactory);
+        //加载 Bean 定义
+        BeanDefinitionReader.loadBeanDefinitions(resource);
       
-      //从容器中获取 Bean 对象
-      Student student = (Student) defaultListableBeanFactory.getBean("student");
+        //从容器中获取 Bean 对象
+        Student student = (Student) defaultListableBeanFactory.getBean("student");
+      }
       ```
 
    2. Spring Bean 对象加载过程
