@@ -278,6 +278,15 @@
         //从容器中获取 Bean 对象
         Student student = (Student) defaultListableBeanFactory.getBean("student");
       }
+      
+      /**
+       * 方式二
+       **/
+      public static void main(String[] args){
+         //准备容器
+         ApplicationContext ac = new ClassPathXmlApplicationContext("applicationContext.xml");
+         Student student = (Student) ac.getBean("student");
+      }
       ```
 
    2. Spring Bean 对象加载过程
