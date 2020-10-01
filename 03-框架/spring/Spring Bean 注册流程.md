@@ -1,4 +1,4 @@
-Spring Bean 实例注册流程
+## Spring Bean 实例注册流程
 
 ```java
 /** 1. 定义好 Spring 的配置文件 applicationContext.xml
@@ -30,4 +30,56 @@ Spring Bean 实例注册流程
 * 13. 调用 Bean 解析完毕的触发动作，从而触发相应的监听器的方法执行（观察者模式）
 **/
 ```
+
+
+
+## 关于 Spring Bean 的创建流程
+
+1. Spring 所管理的 Bean 实际上是缓存在一个 ConcurrentHashMap 中的（singletonObjects 对象中）
+2. 该对象本质是一个 key-value 对的形式，key 指的是 bean 的名字（id）， value 是一个 object 对象，就是所创建的对象
+3. 在创建 bean 之前，首先需要将该 Bean 的创建标识指定好，表示该 bean 已经或是即将被创建，目的是增强缓存的效率
+4. 根据 bean 的 scope 属性来确定当前的这个 bean 是一个 singleton 还是一个 prototype 的 bean，然后创建相应的对象
+5. 无论是 singleton 还是 prototype 的 bean，其创建过程是一致的
+6. 通过 Java 的反射机制来创建 Bean 的实例，在创建之前需要检查构造方法的访问修饰符，如果不是 public 的，则会调用 setAccessible（true）来突破 Java 语法的限制，使得可以通过非 public 构造方法来完成对象实例的创建
+7. 当对象创建完毕后，开始对对象属性的注入
+8. 在对象属性注入的过程中，Spring 除去使用之前通过 BeanDefinition 对象获取 Bean 的信息外，还会通过反射的方式获取到上面所创建 Bean 的真实信息（还包括一个 class 属性，表示该 Bean 所对应的 Class 类型）
+9. 完成 Bean 属性的注入（或者抛出异常）
+10. 如果 Bean 是一个单例的，那么将所创建出来的 bean 添加到 singletonObjects 对象中（缓存中），供程序后续再次使用。
+
+
+
+
+
+## ProxyFactoryBean 的构成
+
+- target
+  - 目标对象，需要对其进行切面增强
+- proxyInterfaces
+  - 代理对象所实现的接口
+- interceptorNames
+  - 通知器（Advisor）列表，通知器中包含了通知（Advice）与切点（Pointcut）
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
