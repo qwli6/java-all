@@ -61,7 +61,19 @@
 
 
 
+```java
+public class MyAdvisor implements MethodInterceptor {
+    @Override
+    public Object invoke(MethodInvocation invocation) throws Throwable {
+        System.out.println("before MyAdvisor invoke");
 
+        Object result = invocation.proceed();
+
+        System.out.println("after MyAdvisor invoked");
+        return result;
+    }
+}
+```
 
 
 
