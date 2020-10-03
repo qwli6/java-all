@@ -59,8 +59,6 @@
 - interceptorNames
   - 通知器（Advisor）列表，通知器中包含了通知（Advice）与切点（Pointcut）
 
-
-
 ```java
 public class MyAdvisor implements MethodInterceptor {
     @Override
