@@ -1,7 +1,9 @@
 ## Spring Bean 实例注册流程
 
+1. 定义好 Spring 的配置文件 applicationContext.xml
+
 ```java
-/** 1. 定义好 Spring 的配置文件 applicationContext.xml
+/** 
 
 * 2. 通过 Resource 对象将 Spring 配置文件进行抽象，抽象成一个具体的 Resource 对象，比如 ClassPathResource
 	Resource resource = new ClasspathResource("applicationContext.xml");
