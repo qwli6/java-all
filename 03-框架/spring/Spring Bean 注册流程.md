@@ -77,6 +77,92 @@ public class MyAdvisor implements MethodInterceptor {
 
 
 
+## BeanFactory 和 FactoryBean 的区别
+
+- BeanFactory 是 IOC 的工厂，它里面管理着 Spring 所创建出来的各种 Bean 对象，当我们在配置文件中（注解）中声明了某个 bean 的 id 后，通过这个 id 就可以获取到该 id 所对应的 class 对象的实例（可能新创建，也可能从缓存中获取，BeanFactory 的缓存就是一个 ConcurrentHashMap）
+- FactoryBean 本质上也是一个 Bean，和其他的 Bean 一样，也是由 BeanFactory 所管理和维护的，当然他的实例也会缓存到 Spring 的工厂中（如果是单例），它与普通的 Bean 的唯一区别就在于，当 Spring 创建另一个 FactoryBean 的实例后，它接下来会判断当前所创建的 Bean 是否是一个 FactoryBean 实例。如果不是，那么就将直接创建出来的 Bean 返回给客户端；如果是，那么它会对其进行进一步处理，根据配置文件所配置的 target，advisor 与 interfaces 等信息在运行期间动态构建出一个类，并生成该类的实例，最后将该实例返回给客户端；因此我们在声明一个 FactoryBean 时，通过 id 获取到的并非是这个 FactoryBean 的实例，而是它动态生成的一个代理对象。（通过三种方式来生成）
+  - JDK 动态代理
+  - CGLIB
+  - ObjenesisCglibAopProxy（Spring4.0 引入）
+
+
+
+
+
+## 关于 Spring AOP 代理的生成过程
+
+1. 通过 ProxyFactoryBean（FactoryBean 接口的实现）来去配置相应的代理对象相关的信息
+2. 在获取 ProxyFactoryBean 实例时，本质上并不是获取到 ProxyFactoryBean 的对象，而是获取到了由 ProxyFactoryBean 所返回的那个对象实例
+3. 在整个 ProxyFactoryBean 实例的构建与缓存的过程中，Spring 会判断当前所创建的对象是否是一个 FactoryBean 的实例。
+4. 差别在于，当创建了 ProxyFactoryBean 对象后，Spring 会判断当前所创建的对象是否是一个 FactoryBean 实例。
+5. 如果不是，那么 Spring 就直接将所创建的对象返回。
+6. 如果是，Spring 则会进入到一个新的流程分支中。
+7. Spring 会根据我们在配置信息中所指定的各种元素，如目标对象是否实现了接口以及 Advisor 等信息，使用动态代理或者 CGLIB 等方式来为目标对象创建响应的代理对象。
+8. 当相应的代理对象创建完毕后，Spring 就会通过 ProxyFactoryBean 的 getObject 方法将所创建的对象返回。
+9. 对象返回到调用端（客户端），他本质上是一个代理对象。可以代理对目标对象的访问与调用；这个代理对象对用户来说，就像一个目标对象一样。
+10. 客户在使用代理对象时，可以正常调用目标对象的方法，同时在执行过程中，会根据我们在配置文件中所配置的信息来调用前后执行额外的附加逻辑。
+
+
+
+## 针对数据库事务的操作
+
+1. setAutoCommit(false)
+2. target.method() [1. 执行成功  2. 执行失败]
+3. conn.commit() or conn.rollback();
+
+
+
+
+
+## 基于注解与基于 XML 配置的 Spring Bean 在创建时机存在的唯一的不同之处
+
+1. 基于 XML 配置的方式，Bean 对象的创建是在程序首次从工厂中获取该对象时才创建的。
+2. 基于注解配置的方式，Bean 对象的创建是在注解处理器解析相应的 @Bean 注解时调用了该注解所修饰的方法，当该方法执行后，相应的对象自然就已经被创建出来了，这时候，Spring 就会将该对象纳入到工厂所管理的范围之内，当我们首次尝试从工厂中获取到该 Bean 对象时，这时，该 Bean 对象实际上已经完成了创建并且已经被纳入到工厂的管理范围之内。
+
+### 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
