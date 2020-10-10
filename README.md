@@ -305,17 +305,43 @@
       6. 模板方法模式（xxxTemplate）
       7. 适配器模式（Adapter）
 
-2. SpringCloud
+2. SpringBoot
 
-3. Dubbo
+   1. SpringBoot 使用 run as 启动和打包成 jar 文件使用 java -jar 启动有何不同？
 
-4. Mybatis
+      ```yml
+      使用类加载器不同
+      - 直接使用右键  run as 启动，使用的是 AppClassLoader 加载器（系统类加载器/或者应用类加载器）
+      - 使用 java -jar test.jar 启动，使用的是 Spring 提供的自定义的类加载器 LaunchedURLClassLoader 加载器来加载
+      ```
 
-5. Zookeeper
+   2. SpringBoot 打包后的目录结构
 
-6. Nginx
+      ```
+      BOOT-INF
+      	classes   //应用 classes 文件
+      	lib   // 依赖的 jar 包
+      META-INF
+      	MANIFEST.MF  //清单文件，指定了 JarLauncher 和 Start-Class
+      org
+      	springframework
+      		boot
+      			loader
+      ```
 
-7. Nacos
+      
+
+3. SpringCloud
+
+4. Dubbo
+
+5. Mybatis
+
+6. Zookeeper
+
+7. Nginx
+
+8. Nacos
 
 
 
