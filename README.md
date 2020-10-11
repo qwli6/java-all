@@ -212,6 +212,40 @@
 
 1. Spring &SpringBoot&SpringMVC
 
+   传统的 SpringMVC 初始化流程
+
+   1. 通过 SpringServletContainerInitializer 来负责对容器启动时相关组件进行初始化
+   2. 到底要初始化哪些组件则是通过 Servlet 规范中所提供的组件 HandlesTypes 来指定的
+   3. 在 SpringServletContainerInitializer 中，其 HandlesTypes 注解则明确指定为了 WebApplicationInitializer.class 类型
+   4. 在 SpringServletContainerInitializer 的 onStartup 方法中，则主要是完成了一些验证与组件装配的工作
+   5. 在 SpringServletContainerInitializer 的 onStartup 方法中，由于某些容器并未遵循 Servlet 规范，导致虽然明确指定了 HandlesTypes 注解的具体类为 WebApplicationInitializer.class 类型，但还是可能会存在将一些非法类型传递过来的情况；所以该方法还对传递进来的具体类型做了细致的判断，只有符合条件的类型才会被纳入到 List<WebApplicationInitializer> 集合中。
+   6. 当以上的判断完成之后，List<WebApplicationInitializer> 就是接下来需要进行初始化的组件了。
+   7. 最后通过遍历 List<WebApplicationInitializer> 列表取出其中的每一个 WebApplicationInitializer 对象，调用这些对象的 onStartup 方法，完成组件的启动初始化工作。
+
+
+   总结一下：
+   SpringServletContainerInitializer 在整个初始化过程中，其扮演的角色实际上是委托或是代理的角色，真正完成初始化工作的依旧是一个个的 WebApplicationInitializer 实现类。
+
+   
+
+
+   现代的 SpringBoot 应用容器初始化过程：
+   1. 对于 SpringBoot 应用来说，它并未使用 SpringServletContainerInitializer 来进行容器的初始化，而是使用了 TomcatStarter 进行的初始化
+   2. TomcatStarter 存在三点因素使得它无法通过 SPI（Service Provider Interface）机制来进行实例化；它没有不带参数的构造方法；他的声明并非 public；其所在的 jar 包并没有 META-INF.services 目录，当然也就不存在名为 javax.servlet.ServletContainerInitializer 的文件了。
+   3. 综上，TomcatStarter 并非通过 SPI 机制进行的查找与实例化。
+   4. 本质上，TomcatStarter 是通过 SpringBoot 框架 new 出来的。
+   5. 与 SpringServletContainerInitializer 类似，TomcatStarter 在容器的初始化过程中也是扮演者一个委托或者是代理的角色，真正完成初始化工作实
+   际上是由它所持有的 ServletContextInitializer 的 onStartup 方法来完成的。
+
+
+   关于 Servlet3.0 的一些重要特性
+   1. 
+
+
+   关于传统的 SpringMVC 和现代的 SpringBoot 应用组件之间的对应关系
+   1. SpringServletContainerInitializer 对应于 TomcatStarter
+   2. WebApplicationInitializer 对应于 ServletContextInitializer
+
    1. Spring 基本使用
 
       build.gradle
@@ -295,6 +329,21 @@
 
    4. SpringMVC 执行流程
 
+      1. SpringMVC 进行开发
+
+         ```
+         web.xml  //部署描述符
+         需要配置
+         Filter
+         Listener
+         Servlet
+         
+         位于 WEB-INF 目录下
+         还需要配置 DispatchServlet 以及 ContextLoaderListener
+         ```
+
+      2. 
+
    5. Spring 中使用了哪些设计模式
 
       1. 工厂模式 BeanFactory
@@ -329,7 +378,61 @@
       			loader
       ```
 
+      SpringBoot 项目在启动的时候会去加载三个 spring.factories 文件，分别位于 auto-configure，spring-boot 以及 spring-beans 里面，将加载到的信息分别存放到 MutilValueMap 中。
+
+      ```java
+      private static Map<String, List<String>> loadSpringFactories(@Nullable ClassLoader classLoader) {
+         MultiValueMap<String, String> result = cache.get(classLoader);
+         if (result != null) {
+            return result;
+         }
       
+         try {
+            // FACTORIES_RESOURCE_LOCATION = "META-INF/spring.factories"
+            Enumeration<URL> urls = (classLoader != null ?
+                  classLoader.getResources(FACTORIES_RESOURCE_LOCATION) :
+                  ClassLoader.getSystemResources(FACTORIES_RESOURCE_LOCATION));
+            result = new LinkedMultiValueMap<>();
+            while (urls.hasMoreElements()) {
+               URL url = urls.nextElement();
+               UrlResource resource = new UrlResource(url);
+               Properties properties = PropertiesLoaderUtils.loadProperties(resource);
+               for (Map.Entry<?, ?> entry : properties.entrySet()) {
+                  String factoryTypeName = ((String) entry.getKey()).trim();
+                  for (String factoryImplementationName : StringUtils.commaDelimitedListToStringArray((String) entry.getValue())) {
+                     result.add(factoryTypeName, factoryImplementationName.trim());
+                  }
+               }
+            }
+            cache.put(classLoader, result);
+            return result;
+         }
+         catch (IOException ex) {
+            throw new IllegalArgumentException("Unable to load factories from location [" +
+                  FACTORIES_RESOURCE_LOCATION + "]", ex);
+         }
+      }
+      ```
+
+   Spring 获取主类是通过运行时期异常获取的
+
+   ```java
+   private Class<?> deduceMainApplicationClass() {
+      try {
+        	// 获取堆栈信息
+         StackTraceElement[] stackTrace = new RuntimeException().getStackTrace();
+         for (StackTraceElement stackTraceElement : stackTrace) {
+            if ("main".equals(stackTraceElement.getMethodName())) {
+               return Class.forName(stackTraceElement.getClassName());
+            }
+         }
+      }
+      catch (ClassNotFoundException ex) {
+         // Swallow and continue
+      }
+      return null;
+   }
+   ```
 
 3. SpringCloud
 
