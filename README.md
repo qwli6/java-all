@@ -327,6 +327,9 @@
 
    3. FactoryBean 和 BeanFactory 的区别
 
+      1. FactoryBean 是一个工厂 Bean，本质还是一个  bean
+      2. BeanFactory 是整个 IOC 容器的核心，里面维护了所有的 Bean 实例
+
    4. SpringMVC 执行流程
 
       1. SpringMVC 进行开发
