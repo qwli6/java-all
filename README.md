@@ -439,6 +439,78 @@
 
 3. SpringCloud
 
+   1. Eureka 注册时配置文件
+
+      ```yml
+      # 服务端配置文件
+      eureka:
+        client:
+          fetch-registry: false
+          register-with-eureka: false
+          service-url:
+          	## 这里 idea 会提示 default-zone 这个字段，不要使用 default-zone 字段，客户端会无法注册上去
+          	## 这个地址是客户端向其注册的地址
+            defaultZone: http://localhost:10099/eureka/
+      
+        instance:
+          hostname: MyEurekaServer
+      
+      spring:
+        application:
+          name: Eureka-Server
+      server:
+        port: 10099
+      
+      ```
+
+      客户端配置文件
+
+      ```yml
+      eureka:
+        client:
+          fetch-registry: true
+          register-with-eureka: true
+          ## 客户端注册地址，idea 会提示 service-url，不要使用 service-url，使用之后会导致客户端无法注册上去
+          serviceUrl:
+          	## 同服务端类似
+            defaultZone: http://localhost:10099/eureka/
+      
+      spring:
+        application:
+          name: Eureka-Client
+      server:
+        port: 8888
+      ```
+
+   2. Robbin
+
+   3. Feign
+
+      1. 可插拔的 HTTP 客户端实现
+      2. 可插拔的编解码器
+      3. 可对 HTTP 请求进行相应的 gzip 压缩
+      4. 可设定压缩的阈值
+      5. 自带负载均衡实现（内部实现了 Ribbon）
+      6. 自带熔断器
+      7. 请求日志详细信息展示
+      8. 自带重试处理器
+
+      Feign 底层是通过 jdk 动态代理实现的，在运行期间生成代理对象。
+
+   4. Hystric
+
+   5. Zuul （服务网关）
+
+   6. GateWay（服务网关）
+
+   7. Config
+
+   8. 消息总线
+
+   9. 分布式链路追踪 Sleuth
+
+   10. zipkin
+
 4. Dubbo
 
 5. Mybatis
