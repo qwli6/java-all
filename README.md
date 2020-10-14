@@ -211,6 +211,7 @@
 ## Web 框架
 
 1. Spring &SpringBoot&SpringMVC
+ - [SpringBean加载流程分析](https://juejin.im/post/6883495949059129351/)
 
    传统的 SpringMVC 初始化流程
 
