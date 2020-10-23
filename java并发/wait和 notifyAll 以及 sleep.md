@@ -29,6 +29,10 @@ wait 方法会导致当前线程等待直到其他线程调用此对象的 notif
 
 
 
+## Thread 和 Sleep 和 await
+
+Thread.sleep 与 await（或是 Object 的 wait 方法）的本质区别：sleep 方法本质上不会释放锁，**而 await 会释放锁，并且在 singal 后，还需要重新获得锁才能继续执行**（该行为与 Object 的 wait 方法完全一致）
+
 ## 问题
 
 编写一个多线程程序，要求实现这样的一个目标：
