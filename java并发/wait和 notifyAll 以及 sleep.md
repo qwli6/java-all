@@ -16,6 +16,16 @@ wait 方法会导致当前线程等待直到其他线程调用此对象的 notif
 
 
 
+synchronized 关键字使用在代码块上
+
+字节码层面会出现一个 monitorenter 和两个 monitorexit，表示锁的进入和退出（异常退出）
+
+synchronized 关键字使用在方法上
+
+字节码层面上会出现一个 flags：ACC_SYNCHRONIZED
+
+
+
 ## 关于 wait 与 notifyAll 和 notify 方法的总结
 
 1. 当调用 wait 时，首先需要确保调用了 wait 方法的线程已经持有了对象的锁
