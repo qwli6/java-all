@@ -70,6 +70,78 @@ kafka 的 topic 信息都是在 zookeeper 上的
 
 
 
+## kafka 副本同步策略
+
+| 方案                               | 优点                                                         | 缺点                                                         |
+| ---------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| **半数以上的完成同步，就发送 ack** | 延迟低                                                       | 选举新的 leader 时，最多可以容忍 n 台节点故障，需要 2n+1 个副本。 |
+| **全部完成同步，发送 ack**         | 选举新的 leader 时，最最多可以容忍 n 台节点故障，需要 n+1 个副本。 | 延迟高                                                       |
+
+kafka 选择了第二种方式，2n+1 的副本数量较多，数据冗余量较大。
+
+> 如果全部完成同步，会造成第二个问题：设想一种场景，leader 收到数据了，现在其他的九个 follower 开始同步数据，但有一个 follower 迟迟不能与 leader 完成同步，那么 leader 就只能等待下去，直到这个 follower 能正常同步后，leader 才能发送 ack 数据。
+
+
+
+kafka 采用了 ISR（in-sync replica set） 的机制来避免这种问题的发生， ISR 是一个动态的和 leader 保持同步的 follower 集合。当 ISR 中的 follower 完成数据的同步之后，leader 就会给 follower 发送 ack。如果 follower 长时间未向 leader 同步数据，则该 follower 将被剔出 ISR，该时间阈值由 `replica.lag.time.max.ms` 参数设定。Leader 发生故障之后，就会从 ISR 中选举新的 Leader。
+
+
+
+## ack 应答机制（生产者）
+
+- 0： producer 不需要等待 broker 的 ack，这一操作提供了一个最低的延迟，broker 一接收到还没有写入磁盘就已经返回，当 broker 故障时有可能丢失数据。
+- 1：producer 等待 broker 的 ack，partition 的 leader 落盘成功后返回 ack，如果在 follower 同步成功之前 leader 故障，将会丢失数据。
+- -1（all）：producer 等待 broker 的 ack，partition 的 leader 和 follower 全部落盘成功后才会返回 ack。但是如果在 follower 同步完成后，broker 发送 ack 之前，leader 发生故障，那么会造成数据重复。
+
+
+
+## 故障
+
+follower 故障
+
+follower 发生故障后会被临时剔出 ISR，待该 follower 恢复后，follower 会读取本地磁盘记录的上次的 HW，并将 log 文件高于 HW 的部分截取掉，从 HW 开始向 leader 进行同步。等待该 follower 的 LEO 大于等于该 Partition 的 HW，即 follower 追上 leader 之后，就可以重新加入 ISR 了。
+
+leader 故障
+
+leader 发生故障后，会从 ISR 中选出一个新的 leader，之后，为了保证多个副本之间的数据一致性。其余的 follower 会先将各自的 log 文件高于 HW 的部分截掉，然后从新的 leader 中同步数据。
+
+> 注意：这只能保证副本之间的数据一致性，并不能保证数据不丢失或者不重复。
+
+
+
+## 分区分配策略
+
+- RoundRobin 轮询（基于分区）
+- Range 范围（基于主题）
+
+
+
+## Kafka 高效读写数据
+
+- 顺序写磁盘
+  - 同样的磁盘，顺序写能到 600M/s，非顺序写磁盘只能到 100KB/s
+- 零复制技术
+
+
+
+
+
+kafka 指定消息有序
+
+- 让同一个 topic 下的消息只发布到一个 partition 中
+- 让同一个 topic 下的消息具有相同的 key，所有相同的 key 都将被放置到同一个分区中
+
+
+
+大多数消息系统，生产者推送消息到 broker 中，消费者从 borker 中拉取消息。对于一些日志中心的系统，比如 Apache Flume 采用了非常不同的 push 模式（push 数据到下游）。
+
+实际上，push 模式和 pull 模式各有利弊
+
+- push 模式很难适应于消费者，如果消费者消费消息过慢，很可能导致消费者拒绝服务。push 模式的目标是尽可能以最快的速率传递消息，最典型的表现就是拒绝服务以及网络阻塞。
+- pull 模式可以根据消费者的消费能力以适当的速率消费消息。但是消费者需要维持一个长轮询，如果队列中没有消息，则会造成资源浪费
+
+
+
 
 
 
