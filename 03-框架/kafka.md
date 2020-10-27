@@ -89,7 +89,7 @@ kafka 采用了 ISR（in-sync replica set） 的机制来避免这种问题的�
 
 ## ack 应答机制（生产者）
 
-- 0： producer 不需要等待 broker 的 ack，这一操作提供了一个最低的延迟，broker 一接收到还没有写入磁盘就已经返回，当 broker 故障时有可能丢失数据。
+- 0： producer 不需要等待 broker 的 ack，这一操作提供了一个最低的延迟，broker 一接收到还没有写入磁盘就已经返回，当 broker 故障时有可能丢失数据。（同时设置的 retries 也不会生效，因为客户端不会感知到任何失败）
 - 1：producer 等待 broker 的 ack，partition 的 leader 落盘成功后返回 ack，如果在 follower 同步成功之前 leader 故障，将会丢失数据。
 - -1（all）：producer 等待 broker 的 ack，partition 的 leader 和 follower 全部落盘成功后才会返回 ack。但是如果在 follower 同步完成后，broker 发送 ack 之前，leader 发生故障，那么会造成数据重复。
 
@@ -128,7 +128,7 @@ leader 发生故障后，会从 ISR 中选出一个新的 leader，之后，为�
 
 kafka 指定消息有序
 
-- 让同一个 topic 下的消息只发布到一个 partition 中
+- 让同一个 topic 下的消息只发布到一个 partition 中（并且要同步发送，Future.get 方法）
 - 让同一个 topic 下的消息具有相同的 key，所有相同的 key 都将被放置到同一个分区中
 
 
@@ -142,7 +142,109 @@ kafka 指定消息有序
 
 
 
+## 面试题
 
+- Kafka 中的 ISR（InSyncRepli）， OSR（OutSyncRepli）、AR（AllRepli）代表什么？
+
+  - ISR + OSR = AR
+
+- Kafka 中的 HW，LEO 等分别代表什么？
+
+  - HW（High Water）高水位，指的是消费者可见的最大数据偏移量
+  - LEO（）每个分区里面的多个副本都有一个最大的 offset 
+
+- Kafka 中是怎么体现消息顺序性的。
+
+  - 同一个分区内区内有序
+
+- Kafka 中的分区器，序列化器。拦截器是否了解？他们之间的处理顺序是什么？
+
+  - 执行顺序：拦截器 -》序列化器 -》 分区器
+  - Partitioner 接口（指定存放消息的分区），ProducerInterceptor 接口（对数据做一些特殊的处理）
+
+- Kafka 生产者客户端的整体接口是什么样子的？使用了几个线程来处理？分别是什么？
+
+  - 两个线程，Main 线程和 Sender 线程
+
+- “消费组中的消费者个数如果超过 topic的分区，那么就会有消费者消费不到数据” 这句话说法是否正确？
+
+  - 正确
+
+- 消费者提交消费位移时条件的是当前消费到的最新消息的 offset 还是 offset +1？
+
+  - offset + 1
+
+- 有哪些情形会造成重复消费？
+
+  - 先处理数据，再提交 offset，数据处理完了，没有提交 offset，会导致数据重复消费
+
+- 哪些情况会造成消息漏消费？
+
+  - 先提交 offset，后处理数据，可能会导致消息漏消费
+
+- 当你使用了 kefka-topics.sh 创建（删除）了一个topic 之后，Kafka 会执行什么逻辑？
+
+  - 会在 zookeeper 中的  /brokers/topics 节点下创建一个新的 topic 节点：如`[myTopic, __consumer_offsets]`
+  - 触发 Controller 监听程序
+  - Kafka Controller 负责 topic的创建工作，并更新 metadata cache
+
+- topic 的分区数是否可以增加？如果可以增加，怎么增加？如果不可以，为啥？
+
+  - 可以增加
+
+- topic 的分区数是否可以减少？如果可以减少，怎么减少？如果不可以，为啥？
+
+  - 不可以减少
+
+- kafka 内部有 topic 吗？如果有？是什么？
+
+  - 有，__consumer_offset
+
+- kafka 分区分配的概念？
+
+  - Range
+  - RoundedRobin（轮询）
+
+- kafka 日志目录结构？
+
+  - .log   真实的数据
+  - .index   索引文件（通过二分查找找到文件位置）
+  - .timeindex 时间索引文件
+
+- 如果我指定了一个 offset，Kafka Controller 怎么查找到对应的消息？
+
+- 聊一聊 Kafka Controller 的作用
+
+- Kafka 中有哪些地方需要选举？这些地方的选举策略又有哪些？
+
+  - Controller，争抢资源
+  - Leader，ISR 中，同步时间，同步数量
+
+- 失效副本是指什么？有哪些应对措施？
+
+  - 
+
+- Kafka 的哪些设计让它有如此高的性能？
+
+  - 分布式
+  - 顺序写磁盘
+  - 零拷贝
+
+  
+
+  ## Kafka 消息数据积压，Kafka 消费能力不够
+
+  - 如果是 kafka 消费能力不足，可以考虑增加 Topic 分区数，同时提升消费者组的数量（消费者数=分区数）
+  - 如果是下游的数据处理不及时：提高每次拉取数量，（max.poll.records 默认是 500） 批量拉取数据过少（拉取数据/处理时间 < 生产速度）是处理的数据小于生产的数据，也会造成数据积压、
+
+  
+
+  
+
+  
+
+  - zookeeper 是以一个树形结构来维持
+  - 会在 zookeeper 中的  /brokers/topics 节点下创建一个新的 topic 节点：如`[myTopic, __consumer_offsets]`
 
 
 
