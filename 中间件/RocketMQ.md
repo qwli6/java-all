@@ -51,21 +51,144 @@
 
 
 
+## RocketMQ 实现顺序发送
+
+发送时：
+
+```java
+producer.send(Message, new MessageQueueSelector() {
+	
+  /**
+   * mqs 队列集合
+   * msg 消息对象
+   **/
+	@Override
+	public MessageQueue select(List<MessageQueue> mqs, Message msg, Object arg){
+	
+	}
+});
+```
+
+```java
+//消息队列选择器
+public interface MessageQueueSelector {
+    MessageQueue select(final List<MessageQueue> mqs, final Message msg, final Object arg);
+}
+```
+
+发送消息时，内部实现 MessageQueueSelector 接口，实现匿名内部类的 select 方法，可以选择发送到哪一个队列中，实现顺序消费。
+
+消费时：
+
+```java
+consumer.registerMessageListener(new MessageListenerOrderly() {
+  @Override
+  public ConsumerOrderlyStatus consumeMessage(List<MessageExt> msgs, ConsumeOrderlyContext context) {
+    
+    return ConsumerOrderlyStatus.SUCCESS;
+  }
+});
+```
+
+`MessageListenerOrderly` 只会开一个线程去消费指定队列里面的消息。
+
+```java
+/**
+ * A MessageListenerConcurrently object is used to receive asynchronously delivered messages orderly.one queue,one
+ * thread
+ * 只会开启一个线程顺序消费一个队列里面的消息
+ */
+public interface MessageListenerOrderly extends MessageListener {
+    /**
+     * It is not recommend to throw exception,rather than returning ConsumeOrderlyStatus.SUSPEND_CURRENT_QUEUE_A_MOMENT
+     * if consumption failure
+     *
+     * @param msgs msgs.size() >= 1<br> DefaultMQPushConsumer.consumeMessageBatchMaxSize=1,you can modify here
+     * @return The consume status
+     */
+    ConsumeOrderlyStatus consumeMessage(final List<MessageExt> msgs,
+        final ConsumeOrderlyContext context);
+}
+```
 
 
 
+## 延迟发送
+
+RocketMQ 支持延迟发送，但是默认只支持指定的几个级别，最大支持 2 个小时。
+
+```java
+msg.setMessageDelayLevel("2"); //延迟 5s 中
+```
+
+```java
+/**
+ * 消息相关的默认配置在 com.alibaba.rocketmq.store.config.MessageStoreConfig 中
+ **/
+// 定时消息相关
+private String messageDelayLevel = "1s 5s 10s 30s 1m 2m 3m 4m 5m 6m 7m 8m 9m 10m 20m 30m 1h 2h";
+```
+
+**一个消息默认大小为 512K**
+
+```java
+// 最大消息大小，默认512K
+private int maxMessageSize = 1024 * 512;
+```
 
 
 
+## 过滤
+
+- 通过 Tag 过滤
+
+- 通过 SQL 过滤
+
+  ```java
+  message1.putUserProperty("i", MessageSelector.bySql("i > 5"));
+  message1.putUserProperty("i", MessageSelector.byTag(""));
+  ```
 
 
 
+## 事务消息
 
+<img src="../13-图片/image-20201028004549556.png" alt="image-20201028004549556" style="zoom:50%;" />
 
+两个流程
 
+- 正常的事务消息的发送及提交
+- 事务消息的补偿流程
 
+```java
+TransactionMQProducer mqProducer = new TransactionMQProducer("group");
+//设置事务监听器
+mqProducer.setTransactionListener(new TransactionListener() {
+  //执行本地事务
+  @Override
+  public LocalTransactionState executeLocalTransaction(org.apache.rocketmq.common.message.Message msg, Object arg) {
+    String tags = msg.getTags();
+    if("TAGA".equals(tags)){
+      //提交事务
+      return LocalTransactionState.COMMIT_MESSAGE;
+    } else if("TAGB".equals(tags)){ //回滚消息
+      return LocalTransactionState.ROLLBACK_MESSAGE;
+    } else {
+      //让 RocketMQ 回查生产者消息
+      return LocalTransactionState.UNKNOW;
+    }
+  }
 
-
+  //回查完毕后执行
+  @Override
+  public LocalTransactionState checkLocalTransaction(MessageExt msg) {
+    String tags = msg.getTags();
+    //回查完毕后提交事务
+    return LocalTransactionState.COMMIT_MESSAGE;
+  }
+});
+mqProducer.sendMessageInTransaction(message1, null);
+```
 
 
 
